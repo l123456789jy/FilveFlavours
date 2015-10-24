@@ -21,9 +21,9 @@ public class LayoutUtil {
 
     private float mRatio;
     private static final float ScreenWidth = ApplicationData.screenWidth;
-    ;    //屏幕的宽
+    //屏幕的宽
     private static final float ScreenHeight = ApplicationData.screenHeight;
-    ;    //屏幕的高
+    //屏幕的高
 
     public LayoutUtil() {
         ratio = 0.563f;//这个是按640/1136算出来的比例值！要使用ui图的宽高！
@@ -48,7 +48,7 @@ public class LayoutUtil {
      */
     public void drawRadiogroup(RadioGroup view, float width, float height, float marginleft,
                                float marginTop) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view
                 .getLayoutParams();
@@ -93,7 +93,7 @@ public class LayoutUtil {
      */
     public void drawRadiobutton(RadioButton view, float width, float height, float marginleft,
                                 float marginTop) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view
                 .getLayoutParams();
@@ -136,7 +136,7 @@ public class LayoutUtil {
      */
     public void drawCheckBox(CheckBox view, float width, float height, float marginleft,
                              float marginTop) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         LayoutParams params = (LayoutParams) view.getLayoutParams();
 
@@ -170,7 +170,7 @@ public class LayoutUtil {
 
     public void drawViewLinearLayout(View view, float width, float height, float marginleft,
                                      float marginTop) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
 
@@ -203,7 +203,7 @@ public class LayoutUtil {
 
     public void drawViewLinearRBLayout(View view, float width, float height, float marginleft, float marginright,
                                        float marginTop, float marginBottom) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
 
@@ -248,7 +248,7 @@ public class LayoutUtil {
 
     public void drawViewLinearlLayout(View view, float width, float height, float marginleft, float marginright,
                                       float marginTop) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
 
@@ -287,7 +287,7 @@ public class LayoutUtil {
 
     public void drawViewLayout(View view, float width, float height, float marginleft,
                                float marginTop) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         LayoutParams params = (LayoutParams) view.getLayoutParams();
 
@@ -319,7 +319,7 @@ public class LayoutUtil {
 
     public void drawViewFramLayout(View view, float width, float height, float marginleft,
                                    float marginTop) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
 
@@ -379,7 +379,7 @@ public class LayoutUtil {
 
             if (height == 0.0f) {
             } else {
-                params.height = (int) ((float) (ScreenWidth / mRatio) * height);
+                params.height = (int) (ScreenWidth / mRatio * height);
             }
         } else {
             if (width == 0.0f) {
@@ -441,7 +441,7 @@ public class LayoutUtil {
 
             if (height == 0.0f) {
             } else {
-                params.height = (int) ((float) (ScreenWidth / mRatio) * height);
+                params.height = (int) (ScreenWidth / mRatio * height);
             }
         } else {
             if (width == 0.0f) {
@@ -481,7 +481,7 @@ public class LayoutUtil {
 
     public void drawViewlLayout(View view, float width, float height, float marginleft, float marginright,
                                 float marginTop) {
-        float ScreenHeight = (float) (ScreenWidth / ratio);
+        float ScreenHeight = ScreenWidth / ratio;
 
         LayoutParams params = (LayoutParams) view.getLayoutParams();
 
@@ -519,7 +519,7 @@ public class LayoutUtil {
 
     public void drawViewRBLayout(View view, float width, float height, float marginleft, float marginright,
                                  float marginTop, float marginBottom) {
-        float ScreenHeights = (float) (ScreenWidth / ratio);
+        float ScreenHeights = ScreenWidth / ratio;
         Log.i("spoort_list", "屏幕的高度为" + ScreenHeights);
 
         LayoutParams params = (LayoutParams) view.getLayoutParams();

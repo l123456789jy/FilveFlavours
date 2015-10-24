@@ -290,11 +290,7 @@ public class FileUtil {
         if (!file.exists() || file.isDirectory()) {
             return false;
         }
-        if (file.length() <= maxSize * 1024) {
-            return true;
-        } else {
-            return false;
-        }
+        return file.length() <= maxSize * 1024;
     }
 
     public static void openMedia(Context context, File file) {
