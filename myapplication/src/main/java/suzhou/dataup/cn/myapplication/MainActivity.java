@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
+        //这种模式适用于较多标题
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
 
