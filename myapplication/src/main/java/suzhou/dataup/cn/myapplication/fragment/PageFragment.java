@@ -9,7 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
+
 import suzhou.dataup.cn.myapplication.R;
+import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
+import suzhou.dataup.cn.myapplication.constance.CountUri;
+import suzhou.dataup.cn.myapplication.manger.OkHttpClientManager;
+import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
 
 /**
@@ -31,6 +40,21 @@ public class PageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+        OkHttpClientManager.get(CountUri.BASE_URI + "/福利/10/1", new MyHttpCallBcak() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Response response) {
+                try {
+                    LogUtil.e("response" + response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     @Nullable

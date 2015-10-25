@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import suzhou.dataup.cn.myapplication.fragment.PageFragment;
+import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
 
 /**
@@ -14,7 +15,7 @@ import suzhou.dataup.cn.myapplication.fragment.PageFragment;
  */
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private String tabTitles[] = new String[]{"tab1", "tab2", "tab3", "tab4"};
+    private String tabTitles[] = new String[]{"福利", "Android", "iOS", "休息视频", "拓展资源", "前端", "所有"};
     private Context context;
 
     public SimpleFragmentPagerAdapter(FragmentManager fm, Context context) {
@@ -24,7 +25,37 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return PageFragment.newInstance(position + 1);
+        switch (position) {
+            //福利的界面
+            case 0:
+                LogUtil.e("SimpleFragmentPagerAdapter" + position);
+                return PageFragment.newInstance(position + 1);
+            //android资源的界面
+            case 1:
+                LogUtil.e("SimpleFragmentPagerAdapter" + position);
+                return PageFragment.newInstance(position + 1);
+            //ios
+            case 2:
+                LogUtil.e("SimpleFragmentPagerAdapter" + position);
+                return PageFragment.newInstance(position + 1);
+            //休息视频
+            case 3:
+                LogUtil.e("SimpleFragmentPagerAdapter" + position);
+                return PageFragment.newInstance(position + 1);
+            //拓展资源
+            case 4:
+                LogUtil.e("SimpleFragmentPagerAdapter" + position);
+                return PageFragment.newInstance(position + 1);
+            //前端
+            case 5:
+                LogUtil.e("SimpleFragmentPagerAdapter" + position);
+                return PageFragment.newInstance(position + 1);
+            //所有
+            case 6:
+                LogUtil.e("SimpleFragmentPagerAdapter" + position);
+                return PageFragment.newInstance(position + 1);
+        }
+        return null;
     }
 
     @Override
