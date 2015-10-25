@@ -17,7 +17,7 @@ import java.io.IOException;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
 import suzhou.dataup.cn.myapplication.constance.CountUri;
-import suzhou.dataup.cn.myapplication.manger.OkHttpClientManager;
+import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
 
