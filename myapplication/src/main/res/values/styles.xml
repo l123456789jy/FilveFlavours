@@ -18,7 +18,7 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">#008cff</item>
-        <item name="tabSelectedTextColor">#0037ff</item>
+        <item name="tabIndicatorColor">#838383</item>
+        <item name="tabSelectedTextColor">#efefef</item>
     </style>
 </resources>

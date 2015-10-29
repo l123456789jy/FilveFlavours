@@ -1,17 +1,12 @@
 package suzhou.dataup.cn.myapplication.base;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -29,10 +24,10 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import butterknife.ButterKnife;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
-import suzhou.dataup.cn.myapplication.utiles.PreferencesUtils;
 
 public abstract class BaseFragment extends Fragment {
     protected View view; // 当前界面的根
@@ -74,7 +69,7 @@ public abstract class BaseFragment extends Fragment {
 
         view = View.inflate(getActivity(), layoutId, null);
 //		view = inflater.inflate(layoutId, container, false);
-
+        ButterKnife.inject(this, view);
 
         init(); // 初始化头中的各个控件,以及公共控件ImageLoader
         initHead(); // 初始化设置当前界面要显示的头状态
