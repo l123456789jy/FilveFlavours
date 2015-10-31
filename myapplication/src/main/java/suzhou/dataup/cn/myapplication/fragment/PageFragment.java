@@ -40,20 +40,7 @@ public class PageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-        OkHttpClientManager.get(CountUri.BASE_URI + "/福利/10/1", new MyHttpCallBcak() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-            }
 
-            @Override
-            public void onResponse(Response response) {
-                try {
-                    LogUtil.e("response" + response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
     }
 

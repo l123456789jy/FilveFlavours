@@ -26,13 +26,10 @@ import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
  */
 public class OkHttpClientManager {
     private static OkHttpClientManager mInstance;
-    private OkHttpClient mOkHttpClient;
+    private static OkHttpClient mOkHttpClient;
     private Handler mDelivery;
     private Gson mGson;
-
-
     private static final String TAG = "OkHttpClientManager";
-
     private OkHttpClientManager() {
         mOkHttpClient = new OkHttpClient();
         //cookie enabled
@@ -40,7 +37,6 @@ public class OkHttpClientManager {
         mDelivery = new Handler(Looper.getMainLooper());
         mGson = new Gson();
     }
-
     public static OkHttpClientManager getInstance() {
         if (mInstance == null) {
             synchronized (OkHttpClientManager.class) {
@@ -52,10 +48,20 @@ public class OkHttpClientManager {
         return mInstance;
     }
 
+    public static OkHttpClient getInstanceClient() {
+        if (mOkHttpClient == null) {
+            synchronized (OkHttpClient.class) {
+                if (mOkHttpClient == null) {
+                    mOkHttpClient = new OkHttpClient();
+                }
+            }
+        }
+        return mOkHttpClient;
+    }
     //封装get请求
     public static void get(String uri, final MyHttpCallBcak mMyHttpCallBcak) {
         //创建okHttpClient对象
-        OkHttpClient mOkHttpClient = new OkHttpClient();
+        OkHttpClient mOkHttpClient = OkHttpClientManager.getInstanceClient();
         //创建一个Request
         final Request request = new Request.Builder()
                 .url(uri)
