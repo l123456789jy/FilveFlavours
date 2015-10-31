@@ -2,6 +2,7 @@ package suzhou.dataup.cn.myapplication;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("简约");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
+        //加上这个放置报错android.os.networkonmainthreadexception
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects().detectLeakedClosableObjects().penaltyLog().penaltyDeath().build());
         pagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(), this);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(pagerAdapter);
