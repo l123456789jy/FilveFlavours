@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -56,7 +57,7 @@ public abstract class BaseFragment extends Fragment {
     float ScreenTitle; // 标题栏与状态栏的高度占比
     float ScreenTitle_title; // 标题栏的高度
     protected LayoutUtil mLayoutUtil;
-
+    public Gson mGson = new Gson();
     public BaseFragment(int layoutId) {
         super();
         this.layoutId = layoutId;

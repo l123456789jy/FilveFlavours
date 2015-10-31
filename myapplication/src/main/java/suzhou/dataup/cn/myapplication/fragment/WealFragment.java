@@ -44,7 +44,6 @@ public class WealFragment extends BaseFragment {
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeContainer;
     Myadputer mMyadputer;
-    Gson mGson;
     List<HomeResoutBean.ResultsEntity> mResultsEntityList = new ArrayList<>();
     boolean isFirstLoda = true;
     public WealFragment() {
@@ -52,7 +51,6 @@ public class WealFragment extends BaseFragment {
     }
     @Override
     protected void initHead() {
-        mGson = new Gson();
     }
     @Override
     protected void initContent() {
@@ -130,10 +128,8 @@ public class WealFragment extends BaseFragment {
                     }
                 });
             }
-
             @Override
             public void onResponse(final Response response) {
-
                 try {
                     if (response != null) {
                         HomeResoutBean homeResoutBean = mGson.fromJson(response.body().string(), HomeResoutBean.class);
@@ -171,7 +167,6 @@ public class WealFragment extends BaseFragment {
                         });
 
                     }
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
