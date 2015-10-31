@@ -95,11 +95,11 @@ public abstract class BaseFragment extends Fragment {
         imageLoader_base = ImageLoader.getInstance();
         animateFirstListener_base = new AnimateFirstDisplayListener();
         options_base = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.ic_menu_camera) // resource or
+                .showImageOnLoading(R.drawable.londing) // resource or
                         // drawable
-                .showImageForEmptyUri(R.drawable.ic_menu_camera) // resource or
+                .showImageForEmptyUri(R.drawable.londing) // resource or
                         // drawable
-                .showImageOnFail(R.drawable.ic_menu_camera) // resource or drawable
+                .showImageOnFail(R.drawable.londing) // resource or drawable
                 .resetViewBeforeLoading(false) // default
 //				.delayBeforeLoading(1000)	// 延时一秒加载
                 .cacheInMemory(true) // default //使用缓存！

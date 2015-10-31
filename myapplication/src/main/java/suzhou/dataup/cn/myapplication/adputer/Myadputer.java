@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
@@ -17,9 +18,11 @@ import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
  */
 public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public List<HomeResoutBean.ResultsEntity> resultsEntityList;
+    public DisplayImageOptions options_base;
 
-    public Myadputer(List<HomeResoutBean.ResultsEntity> resultsEntityList) {
+    public Myadputer(List<HomeResoutBean.ResultsEntity> resultsEntityList, DisplayImageOptions options_base) {
         this.resultsEntityList = resultsEntityList;
+        this.options_base = options_base;
     }
 
     //记住在使用RecyclerView的时候要主页这里的返回类型！ItemViewHolder
@@ -31,7 +34,7 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
-        ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView);
+        ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView, options_base);
     }
 
 

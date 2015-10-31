@@ -142,7 +142,7 @@ public class WealFragment extends BaseFragment {
                                 @Override
                                 public void run() {
                                     mSwipeContainer.setRefreshing(false);//刷新完毕!
-                                    mMyadputer = new Myadputer(mResultsEntityList);
+                                    mMyadputer = new Myadputer(mResultsEntityList, options_base);
                                     recyclerView.setAdapter(mMyadputer);
                                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                                     isFirstLoda = false;
