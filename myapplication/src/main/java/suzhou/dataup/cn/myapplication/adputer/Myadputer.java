@@ -1,5 +1,6 @@
 package suzhou.dataup.cn.myapplication.adputer;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +15,9 @@ import java.util.List;
 
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
+import suzhou.dataup.cn.myapplication.activity.AppealActivity;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
+import suzhou.dataup.cn.myapplication.constance.ConstanceData;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
@@ -23,6 +26,7 @@ import suzhou.dataup.cn.myapplication.utiles.LogUtil;
  *
  */
 public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
+
     public List<HomeResoutBean.ResultsEntity> resultsEntityList;
     public DisplayImageOptions options_base;
     public LayoutUtil layoutUtil;
@@ -44,9 +48,21 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
+        viewHolder.mImageView.setTag(position + "");
         ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView, options_base);
         Bitmap bitmap = ImageLoader.getInstance().loadImageSync(resultsEntityList.get(position).url);
         initLocation(viewHolder, bitmap);
+        viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LogUtil.e("点击了" + v.getTag().toString());
+                Intent mIntent = new Intent(ApplicationData.context, AppealActivity.class);
+                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mIntent.putExtra(ConstanceData.IMAGEURI, resultsEntityList.get(Integer.parseInt(v.getTag().toString())).url);
+                ApplicationData.context.startActivity(mIntent);
+
+            }
+        });
     }
 
     private void initLocation(ItemViewHolder viewHolder, Bitmap mbitmap) {

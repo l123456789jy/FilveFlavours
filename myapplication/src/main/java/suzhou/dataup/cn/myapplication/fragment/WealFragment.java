@@ -94,7 +94,7 @@ public class WealFragment extends BaseFragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                //获取最后一个可见的条目的位置
+                //获取最后一个可见的条目的位置,如果是线性加载更多就换成这个
 //                lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
                 int[] firstVisibleItemPositions = mLayoutManager.findLastVisibleItemPositions(null);
                 for (int firstVisibleItemPosition : firstVisibleItemPositions) {

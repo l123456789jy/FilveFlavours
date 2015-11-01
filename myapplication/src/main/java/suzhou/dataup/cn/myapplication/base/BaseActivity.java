@@ -1,10 +1,10 @@
 package suzhou.dataup.cn.myapplication.base;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -24,11 +24,12 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import butterknife.ButterKnife;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
 
     protected View view; // 当前界面的根
     private int layoutId; // 当前界面对应的布局
@@ -81,6 +82,7 @@ public abstract class BaseActivity extends Activity {
         super.onCreate(savedInstanceState);
         Log.d("spoort_list", "BaseActivity oncreate方法");
         view = View.inflate(this, layoutId, null);
+        ButterKnife.inject(this, view);
 //		view = LayoutInflater.from(this).inflate(layoutId, null);
         setContentView(view);
 
