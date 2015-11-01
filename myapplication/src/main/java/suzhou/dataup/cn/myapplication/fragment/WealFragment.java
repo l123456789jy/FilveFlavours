@@ -3,11 +3,10 @@ package suzhou.dataup.cn.myapplication.fragment;
 import android.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -19,7 +18,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.adputer.Myadputer;
-import suzhou.dataup.cn.myapplication.adputer.StaggeredRecyclerViewAdapter;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
@@ -37,8 +35,9 @@ import suzhou.dataup.cn.myapplication.utiles.LogUtil;
  * 福利的界面
  */
 public class WealFragment extends BaseFragment {
-    int lastVisibleItem;
+    int lastVisibleItem = 0;
     int index = 1;
+    int temp = 0;
     @InjectView(R.id.my_recycler_view)
     RecyclerView recyclerView;
     @InjectView(R.id.swipe_container)
@@ -55,9 +54,9 @@ public class WealFragment extends BaseFragment {
     @Override
     protected void initContent() {
         // 创建一个线性布局管理器
-        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+//        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         //这里可以指定他的方式
-//        mLinearLayoutManager = new StaggeredGridLayoutManager( 2,StaggeredGridLayoutManager.VERTICAL);//创建一个瀑布流的布局
+        final StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);//创建一个瀑布流的布局
         recyclerView.setLayoutManager(mLayoutManager);//设置线性的管理器！
         //设置刷新时的不同的颜色！
         mSwipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
@@ -65,6 +64,7 @@ public class WealFragment extends BaseFragment {
         mSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                lastVisibleItem = 0;
                 isFirstLoda = true;
                 mResultsEntityList.clear();
                 index = 1;
@@ -84,7 +84,6 @@ public class WealFragment extends BaseFragment {
                 LogUtil.e("滚动的状态  " + newState);
                 //这个就是判断当前滑动停止了，并且获取当前屏幕最后一个可见的条目是第几个，当前屏幕数据已经显示完毕的时候就去加载数据
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 == mMyadputer.getItemCount()) {
-                    mSwipeContainer.setRefreshing(true);
                     //请求数据
                     index++;
                     getData(index);
@@ -96,11 +95,19 @@ public class WealFragment extends BaseFragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 //获取最后一个可见的条目的位置
-                lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
-                LogUtil.e("停止可见的位置是  " + lastVisibleItem);
+//                lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
+                int[] firstVisibleItemPositions = mLayoutManager.findLastVisibleItemPositions(null);
+                for (int firstVisibleItemPosition : firstVisibleItemPositions) {
+                    temp = firstVisibleItemPosition;
+                    if (lastVisibleItem < temp) {
+                        lastVisibleItem = firstVisibleItemPosition;//标记最后一个显示的postion
+                        LogUtil.e("停止可见的位置是  " + firstVisibleItemPosition);
+                    }
+                }
             }
         });
     }
+
     @Override
     protected void initLocation() {
         getData(index);

@@ -20,7 +20,7 @@ import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
 /**
- * Created by Administrator on 2015/4/13 0013.
+ *
  */
 public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public List<HomeResoutBean.ResultsEntity> resultsEntityList;
@@ -28,7 +28,6 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public LayoutUtil layoutUtil;
     @InjectView(R.id.tv)
     ImageView mTv;
-
 
     public Myadputer(List<HomeResoutBean.ResultsEntity> resultsEntityList, DisplayImageOptions options_base, LayoutUtil layoutUtil) {
         this.resultsEntityList = resultsEntityList;
