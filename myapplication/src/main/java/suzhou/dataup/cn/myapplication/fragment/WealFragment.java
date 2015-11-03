@@ -45,6 +45,7 @@ public class WealFragment extends BaseFragment {
     SwipeRefreshLayout mSwipeContainer;
     Myadputer mMyadputer;
     List<HomeResoutBean.ResultsEntity> mResultsEntityList = new ArrayList<>();
+    StaggeredGridLayoutManager mLayoutManager;//创建一个瀑布流的布局
     boolean isFirstLoda = true;
     public WealFragment() {
         super(R.layout.fragment_weal);
@@ -58,7 +59,7 @@ public class WealFragment extends BaseFragment {
         // 创建一个线性布局管理器
 //        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         //这里可以指定他的方式
-        final StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);//创建一个瀑布流的布局
+        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);//设置线性的管理器！
         //设置刷新时的不同的颜色！
         mSwipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
@@ -71,7 +72,8 @@ public class WealFragment extends BaseFragment {
                 mResultsEntityList.clear();
                 index = 1;
                 getData(index);
-
+                //目前不知道什么原因倒置刷新之后头部下移。设置刷新完毕之后直接移动到首个postion
+                recyclerView.scrollToPosition(0);
             }
         });
         //监听recyclerView的上滑动的位置来进行积蓄的加载更多的数据
@@ -89,7 +91,9 @@ public class WealFragment extends BaseFragment {
                     //请求数据
                     index++;
                     getData(index);
+
                 }
+
             }
 
             //滚动停止后调用
@@ -170,11 +174,12 @@ public class WealFragment extends BaseFragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    LogUtil.e("sss");
                                     mSwipeContainer.setRefreshing(false);//刷新完毕!
                                     mMyadputer = new Myadputer(mResultsEntityList, options_base, mLayoutUtil);
                                     recyclerView.setAdapter(mMyadputer);
-                                    recyclerView.setItemAnimator(new DefaultItemAnimator());
                                     isFirstLoda = false;
+
                                 }
                             });
                         } else {
