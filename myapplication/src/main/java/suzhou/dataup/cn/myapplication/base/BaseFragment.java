@@ -58,6 +58,7 @@ public abstract class BaseFragment extends Fragment {
     float ScreenTitle_title; // 标题栏的高度
     protected LayoutUtil mLayoutUtil;
     public Gson mGson = new Gson();
+
     public BaseFragment(int layoutId) {
         super();
         this.layoutId = layoutId;
@@ -131,6 +132,20 @@ public abstract class BaseFragment extends Fragment {
                 .build();
     }
 
+    /**
+     * 显示和隐藏
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        //可见
+        if (isVisibleToUser) {
+            isShow();
+            //不可见
+        } else {
+            isGone();
+        }
+    }
 
     protected abstract void initHead();
 
@@ -149,6 +164,15 @@ public abstract class BaseFragment extends Fragment {
      */
     protected abstract void initLogic();
 
+    /**
+     * fragment可见
+     */
+    protected abstract void isShow();
+
+    /**
+     * fragment不可见
+     */
+    protected abstract void isGone();
 
     /**
      * 避免每次都进行强转

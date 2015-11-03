@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <group
+        android:checkableBehavior="single"
+        android:title="Home items">
+
+        <item
+            android:id="@+id/nav_blog"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="鍗氬鍦板潃"/>
+
+        <item
+            android:id="@+id/nav_ver"
+            android:icon="@drawable/ic_error_outline_black_36dp"
+            android:title="鐗堟湰淇℃伅"/>
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_error_outline_black_36dp"
+            android:title="鍏充簬鎴�"/>
+
+    </group>
+
+    <item android:title="Sub items">
+
+        <menu>
+
+            <item
+                android:id="@+id/sub_exit"
+                android:icon="@drawable/ic_power_settings_new_black_36dp"
+                android:title="閫�鍑哄簲鐢�"/>
+
+            <item
+                android:id="@+id/sub_switch"
+                android:icon="@drawable/ic_settings_applications_black_36dp"
+                android:title="鍒囨崲涓婚"/>
+        </menu>
+    </item>
+
+</menu>

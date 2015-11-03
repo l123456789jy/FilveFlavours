@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/header.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/header.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_account_balance_black_24dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_backspace_black_24dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_discuss.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_error_outline_black_36dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_launcher.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_list_black_24dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_list_black_48dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_power_settings_new_black_36dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_settings_applications_black_36dp.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/image.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/img1.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/img2.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/img3.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/img4.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/img5.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/img6.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/img7.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/img8.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/layout/layout_header.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/src/main/res/layout/layout_menu.xml" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

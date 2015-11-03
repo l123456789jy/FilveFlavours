@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import suzhou.dataup.cn.myapplication.fragment.AndroidFragment;
 import suzhou.dataup.cn.myapplication.fragment.PageFragment;
 import suzhou.dataup.cn.myapplication.fragment.WealFragment;
 
@@ -15,14 +16,13 @@ import suzhou.dataup.cn.myapplication.fragment.WealFragment;
  */
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private String tabTitles[] = new String[]{"福利", "Android", "iOS", "休息视频", "拓展资源", "前端", "所有"};
+    private String tabTitles[] = new String[]{"福利", "Android", "休息视频"};
     private Context context;
 
     public SimpleFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
     }
-
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -32,7 +32,8 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
                 return mWealFragment;
             //android资源的界面
             case 1:
-                return PageFragment.newInstance(position + 1);
+                AndroidFragment mAndroidFragment = new AndroidFragment();
+                return mAndroidFragment;
             //ios
             case 2:
                 return PageFragment.newInstance(position + 1);

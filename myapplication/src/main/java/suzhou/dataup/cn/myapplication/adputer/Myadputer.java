@@ -1,7 +1,6 @@
 package suzhou.dataup.cn.myapplication.adputer;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +11,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
+import java.util.Random;
 
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
@@ -50,8 +50,8 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         viewHolder.mImageView.setTag(position + "");
         ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView, options_base);
-        Bitmap bitmap = ImageLoader.getInstance().loadImageSync(resultsEntityList.get(position).url);
-        initLocation(viewHolder, bitmap);
+//        Bitmap bitmap = ImageLoader.getInstance().loadImageSync(resultsEntityList.get(position).url);
+        initLocation(viewHolder);
         viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,14 +60,14 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
                 mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mIntent.putExtra(ConstanceData.IMAGEURI, resultsEntityList.get(Integer.parseInt(v.getTag().toString())).url);
                 ApplicationData.context.startActivity(mIntent);
-
             }
         });
     }
 
-    private void initLocation(ItemViewHolder viewHolder, Bitmap mbitmap) {
+    private void initLocation(ItemViewHolder viewHolder) {
         LogUtil.e("viewHolder.mCardView" + viewHolder.mCardView);
-        layoutUtil.drawViewRBLayout(viewHolder.mImageView, 1f, ((mbitmap.getHeight()) / ApplicationData.screenHeight), 0.020f, 0.020f, 0.020f, 0f);
+        Random mRandom = new Random(200);
+        layoutUtil.drawViewRBLayout(viewHolder.mImageView, 1f, (mRandom.nextInt() / ApplicationData.screenHeight), 0.020f, 0.020f, 0.020f, 0f);
     }
     @Override
     public int getItemCount() {

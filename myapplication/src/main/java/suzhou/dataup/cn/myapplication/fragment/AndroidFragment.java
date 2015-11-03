@@ -3,8 +3,8 @@ package suzhou.dataup.cn.myapplication.fragment;
 import android.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.widget.Toast;
 
 import com.squareup.okhttp.Request;
@@ -17,25 +17,24 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.adputer.Myadputer;
+import suzhou.dataup.cn.myapplication.adputer.AndroidResoutAdputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
 import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
-import suzhou.dataup.cn.myapplication.utiles.SwipContainerUtiles;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link WealFragment.OnFragmentInteractionListener} interface
+ * {@link AndroidFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link WealFragment#newInstance} factory method to
+ * Use the {@link AndroidFragment#newInstance} factory method to
  * create an instance of this fragment.
- * 福利的界面
+ * 安卓控件的界面的界面
  */
-public class WealFragment extends BaseFragment {
+public class AndroidFragment extends BaseFragment {
     int lastVisibleItem = 0;
     int index = 1;
     int temp = 0;
@@ -43,22 +42,22 @@ public class WealFragment extends BaseFragment {
     RecyclerView recyclerView;
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeContainer;
-    Myadputer mMyadputer;
+    AndroidResoutAdputer mMyadputer;
     List<HomeResoutBean.ResultsEntity> mResultsEntityList = new ArrayList<>();
     boolean isFirstLoda = true;
-    public WealFragment() {
+
+    public AndroidFragment() {
         super(R.layout.fragment_weal);
     }
+
     @Override
     protected void initHead() {
-
     }
+
     @Override
     protected void initContent() {
         // 创建一个线性布局管理器
-//        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        //这里可以指定他的方式
-        final StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);//创建一个瀑布流的布局
+        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);//设置线性的管理器！
         //设置刷新时的不同的颜色！
         mSwipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
@@ -86,6 +85,7 @@ public class WealFragment extends BaseFragment {
                 LogUtil.e("滚动的状态  " + newState);
                 //这个就是判断当前滑动停止了，并且获取当前屏幕最后一个可见的条目是第几个，当前屏幕数据已经显示完毕的时候就去加载数据
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 == mMyadputer.getItemCount()) {
+                    mSwipeContainer.setRefreshing(true);//刷新完毕!
                     //请求数据
                     index++;
                     getData(index);
@@ -97,23 +97,14 @@ public class WealFragment extends BaseFragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 //获取最后一个可见的条目的位置,如果是线性加载更多就换成这个
-//                lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
-                int[] firstVisibleItemPositions = mLayoutManager.findLastVisibleItemPositions(null);
-                for (int firstVisibleItemPosition : firstVisibleItemPositions) {
-                    temp = firstVisibleItemPosition;
-                    if (lastVisibleItem < temp) {
-                        lastVisibleItem = firstVisibleItemPosition;//标记最后一个显示的postion
-                        LogUtil.e("停止可见的位置是  " + firstVisibleItemPosition);
-                    }
-                }
+                lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
             }
         });
     }
 
     @Override
     protected void initLocation() {
-        //利用反射进行设置自动刷新！
-        SwipContainerUtiles.setRefreshing(mSwipeContainer, true, true);
+        getData(index);
     }
 
 
@@ -123,14 +114,14 @@ public class WealFragment extends BaseFragment {
 
     @Override
     protected void isShow() {
-       /* if (mMyadputer!=null){
+        if (mMyadputer != null) {
             lastVisibleItem = 0;
             isFirstLoda = true;
             mResultsEntityList.clear();
             index = 1;
             getData(index);
             LogUtil.e("可见了");
-        }*/
+        }
 
     }
 
@@ -147,7 +138,7 @@ public class WealFragment extends BaseFragment {
 
     //获取福利的数据
     private void getData(int index) {
-        OkHttpClientManager.get(CountUri.BASE_URI + "/福利/10/" + index + "", new MyHttpCallBcak() {
+        OkHttpClientManager.get(CountUri.BASE_URI + "/Android/20/" + index + "", new MyHttpCallBcak() {
             @Override
             public void onFailure(Request request, IOException e) {
                 getActivity().runOnUiThread(new Runnable() {
@@ -157,6 +148,7 @@ public class WealFragment extends BaseFragment {
                     }
                 });
             }
+
             @Override
             public void onResponse(final Response response) {
                 try {
@@ -171,7 +163,7 @@ public class WealFragment extends BaseFragment {
                                 @Override
                                 public void run() {
                                     mSwipeContainer.setRefreshing(false);//刷新完毕!
-                                    mMyadputer = new Myadputer(mResultsEntityList, options_base, mLayoutUtil);
+                                    mMyadputer = new AndroidResoutAdputer(mResultsEntityList, options_base, mLayoutUtil);
                                     recyclerView.setAdapter(mMyadputer);
                                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                                     isFirstLoda = false;
