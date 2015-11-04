@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Build;
 import android.view.WindowManager;
 
+import com.github.mmin18.layoutcast.LayoutCast;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -140,6 +141,7 @@ public class ApplicationData extends Application {
 
         context = getApplicationContext();
         initImageLoader(context);
+        LayoutCast.init(this);
         LogUtil.e("屏幕的宽度" + screenWidth);
         LogUtil.e("屏幕的高度" + screenHeight);
     }

@@ -1,6 +1,8 @@
 package suzhou.dataup.cn.myapplication.fragment;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
+import android.os.Build;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -54,6 +56,8 @@ public class WealFragment extends BaseFragment {
     protected void initHead() {
 
     }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void initContent() {
         // 创建一个线性布局管理器
@@ -170,6 +174,10 @@ public class WealFragment extends BaseFragment {
                         for (HomeResoutBean.ResultsEntity result : results) {
                             mResultsEntityList.add(result);
                         }
+                        if (homeResoutBean.results.size() == 0) {
+                            lastVisibleItem = 0;
+                            return;
+                        }
                         if (isFirstLoda) {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
@@ -179,7 +187,7 @@ public class WealFragment extends BaseFragment {
                                     mMyadputer = new Myadputer(mResultsEntityList, options_base, mLayoutUtil);
                                     recyclerView.setAdapter(mMyadputer);
                                     isFirstLoda = false;
-
+                                    LogUtil.e("刷新了！");
                                 }
                             });
                         } else {
@@ -188,6 +196,7 @@ public class WealFragment extends BaseFragment {
                                 public void run() {
                                     mSwipeContainer.setRefreshing(false);//刷新完毕!
                                     mMyadputer.notifyDataSetChanged();
+                                    LogUtil.e("刷新了！");
                                 }
                             });
 

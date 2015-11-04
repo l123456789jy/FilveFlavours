@@ -11,7 +11,6 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
-import java.util.Random;
 
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
@@ -37,6 +36,7 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
         this.resultsEntityList = resultsEntityList;
         this.options_base = options_base;
         this.layoutUtil = layoutUtil;
+        setHasStableIds(true);
     }
 
     //记住在使用RecyclerView的时候要主页这里的返回类型！ItemViewHolder
@@ -50,12 +50,10 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         viewHolder.mImageView.setTag(position + "");
         ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView, options_base);
-//        Bitmap bitmap = ImageLoader.getInstance().loadImageSync(resultsEntityList.get(position).url);
-        initLocation(viewHolder);
+        LogUtil.e("ItemViewHolder" + viewHolder.toString());
         viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.e("点击了" + v.getTag().toString());
                 Intent mIntent = new Intent(ApplicationData.context, AppealActivity.class);
                 mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mIntent.putExtra(ConstanceData.IMAGEURI, resultsEntityList.get(Integer.parseInt(v.getTag().toString())).url);
@@ -64,18 +62,19 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
         });
     }
 
-    private void initLocation(ItemViewHolder viewHolder) {
-        LogUtil.e("viewHolder.mCardView" + viewHolder.mCardView);
-        Random mRandom = new Random(200);
-        layoutUtil.drawViewRBLayout(viewHolder.mImageView, 1f, (mRandom.nextInt() / ApplicationData.screenHeight), 0.020f, 0.020f, 0.020f, 0f);
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
     @Override
     public int getItemCount() {
         return resultsEntityList.size();
     }
+
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
         public CardView mCardView;
+
         public ItemViewHolder(View itemView) {
             super(itemView);
             ImageView viewById = (ImageView) itemView.findViewById(R.id.tv);
