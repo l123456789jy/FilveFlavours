@@ -1,5 +1,6 @@
 package suzhou.dataup.cn.myapplication.adputer;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,10 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import java.util.List;
 
 import suzhou.dataup.cn.myapplication.R;
+import suzhou.dataup.cn.myapplication.activity.CountActivity;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
+import suzhou.dataup.cn.myapplication.constance.ConstanceData;
+import suzhou.dataup.cn.myapplication.contex.ApplicationData;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
 
 /**
@@ -41,13 +45,18 @@ public class AndroidResoutAdputer extends RecyclerView.Adapter<AndroidResoutAdpu
     @Override
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         viewHolder.time_tv.setText("更新时间:  " + resultsEntityList.get(position).updatedAt.split("T")[0]);
-        viewHolder.mTextView.setTag(resultsEntityList.get(position).url);
+        viewHolder.mTextView.setTag(resultsEntityList.get(position).url + "," + resultsEntityList.get(position).desc);
         viewHolder.mTextView.setText(resultsEntityList.get(position).desc);
         layoutUtil.drawViewLayout(viewHolder.mRl, 1f, 0f, 0.040f, 0f);
         viewHolder.mTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String countUri = v.getTag().toString();
+                Intent mIntent = new Intent(ApplicationData.context, CountActivity.class);
+                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mIntent.putExtra(ConstanceData.COUNT_URI, countUri);
+                ApplicationData.context.startActivity(mIntent);
+
             }
         });
     }

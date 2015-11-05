@@ -7,5 +7,5 @@ package suzhou.dataup.cn.myapplication.constance;
  */
 public class ConstanceData {
     public static final String IMAGEURI = "imageuri";
-
+    public static final String COUNT_URI = "counturi";
 }

@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -80,6 +81,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_PROGRESS);// 让进度条显示在标题栏上
         Log.d("spoort_list", "BaseActivity oncreate方法");
         view = View.inflate(this, layoutId, null);
         ButterKnife.inject(this, view);
