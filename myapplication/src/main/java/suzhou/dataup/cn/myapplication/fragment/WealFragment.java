@@ -65,6 +65,7 @@ public class WealFragment extends BaseFragment {
         //这里可以指定他的方式
         mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);//设置线性的管理器！
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         //设置刷新时的不同的颜色！
         mSwipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         //google官方的下拉刷新！
@@ -131,14 +132,6 @@ public class WealFragment extends BaseFragment {
 
     @Override
     protected void isShow() {
-       /* if (mMyadputer!=null){
-            lastVisibleItem = 0;
-            isFirstLoda = true;
-            mResultsEntityList.clear();
-            index = 1;
-            getData(index);
-            LogUtil.e("可见了");
-        }*/
 
     }
 

@@ -82,8 +82,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             //版本信息
         } else if (id == R.id.nav_ver) {
-
-
             //关于我
         } else if (id == R.id.nav_about) {
             Uri uri = Uri.parse("https://github.com/l123456789jy");

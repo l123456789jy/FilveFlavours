@@ -28,11 +28,9 @@ public class CountActivity extends BaseActivity {
     WebView mWebview;
     @InjectView(R.id.myProgressBar)
     ProgressBar mMyProgressBar;
-
     public CountActivity() {
         super(R.layout.activity_count);
     }
-
     @Override
     protected void initHead() {
         mToolbars.setTitleTextColor(Color.WHITE);

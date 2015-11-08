@@ -19,7 +19,6 @@ import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.constance.ConstanceData;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
-import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
 /**
  *
@@ -50,7 +49,6 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         viewHolder.mImageView.setTag(position + "");
         ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView, options_base);
-        LogUtil.e("ItemViewHolder" + viewHolder.toString());
         viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
