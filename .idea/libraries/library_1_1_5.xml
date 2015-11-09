@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="library-1.1.5">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/myapplication/build/intermediates/exploded-aar/com.github.mmin18.layoutcast/library/1.1.5/res" />
+      <root url="jar://$PROJECT_DIR$/myapplication/build/intermediates/exploded-aar/com.github.mmin18.layoutcast/library/1.1.5/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mmin18.layoutcast/library/1.1.5/948768e31267f0fbafa7a6b8a68decc51a56bdf2/library-1.1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
