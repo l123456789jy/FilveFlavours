@@ -11,9 +11,34 @@
         android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/my_recycler_view"
-        android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
     </android.support.v4.widget.SwipeRefreshLayout>
+    <LinearLayout
+        android:background="#efefefef"
+        android:id="@+id/footer_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/load_more_pb"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/load_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="正在加载..."/>
+    </LinearLayout>
 
 </RelativeLayout>
