@@ -1,6 +1,6 @@
 # FilveFlavours
 
-![](https://github.com/l123456789jy/FilveFlavours/GIF.gif)
+![](https://github.com/l123456789jy/FilveFlavours/blob/master/GIF.gif)
 License
 =======
 
