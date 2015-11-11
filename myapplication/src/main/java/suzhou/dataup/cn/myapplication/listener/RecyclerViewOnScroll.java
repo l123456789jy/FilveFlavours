@@ -9,7 +9,7 @@ import android.util.Log;
 import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;
 
 /**
- * Created by WuXiaolong on 2015/7/7.
+ * Created by liujingyuan
  * <p/>
  * 监听上拉至底部滚动监听
  */
