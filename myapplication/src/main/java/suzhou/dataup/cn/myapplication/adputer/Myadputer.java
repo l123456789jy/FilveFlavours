@@ -49,6 +49,7 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         viewHolder.mImageView.setTag(position + "");
         ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView, options_base);
+        layoutUtil.drawViewLayout(viewHolder.mImageView, 0.4f, 0.6f, 0f, 0f);
         viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
