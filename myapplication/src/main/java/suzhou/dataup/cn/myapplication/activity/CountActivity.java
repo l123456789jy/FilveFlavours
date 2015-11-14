@@ -2,6 +2,7 @@ package suzhou.dataup.cn.myapplication.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
@@ -28,12 +29,16 @@ public class CountActivity extends BaseActivity {
     WebView mWebview;
     @InjectView(R.id.myProgressBar)
     ProgressBar mMyProgressBar;
+    @InjectView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout mCollapsingToolbar;
+
     public CountActivity() {
         super(R.layout.activity_count);
     }
+
     @Override
     protected void initHead() {
-        mToolbars.setTitleTextColor(Color.WHITE);
+        mCollapsingToolbar.setCollapsedTitleTextColor(Color.WHITE);
         mToolbars.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         WebSettings webSettings = mWebview.getSettings();
         webSettings.setUseWideViewPort(true);//设置此属性，可任意比例缩放
@@ -48,7 +53,8 @@ public class CountActivity extends BaseActivity {
     protected void initContent() {
         String count = getIntent().getStringExtra(ConstanceData.COUNT_URI);
         String[] split = count.split(",");
-        mToolbars.setTitle(split[1]);
+        //当添加视察的动画的时候不要用toobal设置标题了！
+        mCollapsingToolbar.setTitle(split[1]);
         mWebview.loadUrl(split[0]);
     }
 
