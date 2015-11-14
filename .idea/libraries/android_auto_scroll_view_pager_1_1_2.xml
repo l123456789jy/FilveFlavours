@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="android-auto-scroll-view-pager-1.1.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.trinea.android.view.autoscrollviewpager/android-auto-scroll-view-pager/1.1.2/8ad9237a8b0965696ea32ca9c1de173e082eaad4/android-auto-scroll-view-pager-1.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.trinea.android.view.autoscrollviewpager/android-auto-scroll-view-pager/1.1.2/65c6338084ee709e7e8eb1c0fbf0e94947062ffc/android-auto-scroll-view-pager-1.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

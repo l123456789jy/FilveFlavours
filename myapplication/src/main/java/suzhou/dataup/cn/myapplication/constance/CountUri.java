@@ -6,5 +6,6 @@ package suzhou.dataup.cn.myapplication.constance;
  */
 public class CountUri {
     public static final String BASE_URI = "http://gank.avosapps.com/api/data";
+    public static final String Home_pager = "http://api.3g.ifeng.com/iosNews?id=aid=SYDT10&imgwidth=100&type=list&pagesize=20";
 
 }

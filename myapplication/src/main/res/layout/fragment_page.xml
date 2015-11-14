@@ -1,13 +1,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
     >
-
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
-
+    <RelativeLayout android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+        <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
+            android:id="@+id/convenientBanner"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"/>
+        <TextView
+            android:layout_marginTop="120dp"
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_marginTop="120dp"
+            android:id="@+id/total_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_marginTop="120dp"
+            android:id="@+id/index_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/total_count"
+            android:text="1"
+            android:textColor="@android:color/holo_red_dark"/>
+    </RelativeLayout>
 </RelativeLayout>

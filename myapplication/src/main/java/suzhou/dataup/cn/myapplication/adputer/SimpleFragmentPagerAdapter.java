@@ -34,21 +34,22 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 AndroidFragment mAndroidFragment = new AndroidFragment();
                 return mAndroidFragment;
-            //ios
+            //新闻界面
             case 2:
-                return PageFragment.newInstance(position + 1);
+                PageFragment mPageFragment = new PageFragment();
+                return mPageFragment;
             //休息视频
             case 3:
-                return PageFragment.newInstance(position + 1);
-            //拓展资源
+
+                //拓展资源
             case 4:
-                return PageFragment.newInstance(position + 1);
-            //前端
+
+                //前端
             case 5:
-                return PageFragment.newInstance(position + 1);
-            //所有
+
+                //所有
             case 6:
-                return PageFragment.newInstance(position + 1);
+
         }
         return null;
     }

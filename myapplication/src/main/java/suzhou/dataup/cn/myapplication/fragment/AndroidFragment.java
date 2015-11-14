@@ -144,7 +144,6 @@ public class AndroidFragment extends BaseFragment implements LodeMoreCallBack {
                                 public void run() {
                                     mFooterLinearlayout.setVisibility(View.GONE);
                                     mSwipeContainer.setRefreshing(false);//刷新完毕!
-
                                     recyclerView.setAdapter(mMyadputer);
                                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                                     isFirstLoda = false;
