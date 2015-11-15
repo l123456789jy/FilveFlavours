@@ -79,18 +79,17 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     boolean isFirst = true;
     public int index = 2;
     HttpUtils mHttpUtils = new HttpUtils();
+    public List<NewsBean.BodyEntity.ItemEntity> resultsEntityList = new ArrayList<>();
     public PageFragment() {
         super(R.layout.fragment_page);
     }
-
     @Override
     protected void initHead() {
-
     }
-
     @Override
     protected void initContent() {
         getNewsViewPagerData();
+        getNetData(2);
         mConvenientBanner.startAutoScroll();
         // 创建一个线性布局管理器
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -106,6 +105,8 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
                     @Override
                     public void run() {
                         super.run();
+                        index = 2;
+                        resultsEntityList.clear();
                         getNetData(2);
                     }
                 }.start();
@@ -115,8 +116,6 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
 
     @Override
     protected void initLocation() {
-        getNetData(2);
-
     }
 
     @Override
@@ -125,28 +124,23 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
             }
-
             @Override
             public void onPageSelected(int i) {
                 if (null != mIndexTv) {
                     mIndexTv.setText((i + 1) + "");
                 }
             }
-
             @Override
             public void onPageScrollStateChanged(int i) {
             }
         });
     }
-
     @Override
     protected void isShow() {
     }
-
     @Override
     protected void isGone() {
     }
-
     //获取头部的数据的数据
     private void getNewsViewPagerData() {
         //在子线程中执行访问网络的操作
@@ -154,6 +148,7 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
             @Override
             public void onFailure(Request request, IOException e) {
             }
+
             @Override
             public void onResponse(final Response response) {
                 getActivity().runOnUiThread(new Runnable() {
@@ -206,6 +201,7 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     }
 
     public void getNetData(int index) {
+        LogUtil.e(CountUri.NEWS_BASE_URI + index);
         mHttpUtils.send(HttpRequest.HttpMethod.GET, CountUri.NEWS_BASE_URI + index, new RequestCallBack<String>() {
             @Override
             public void onSuccess(final ResponseInfo<String> responseInfo) {
@@ -214,18 +210,22 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
                     public void run() {
                         mSwipeContainer.setRefreshing(false);//刷新完毕!
                         try {
+                            JSONArray mJSONArray = new JSONArray(responseInfo.result.toString());
+                            mnewsBean = mGson.fromJson(mJSONArray.getString(0), NewsBean.class);
+                            for (NewsBean.BodyEntity.ItemEntity itemEntity : mnewsBean.body.item) {
+                                resultsEntityList.add(itemEntity);
+                            }
                             if (isFirst) {
                                 isFirst = false;
-                                JSONArray mJSONArray = new JSONArray(responseInfo.result.toString());
-                                mnewsBean = mGson.fromJson(mJSONArray.getString(0), NewsBean.class);
-                                mNewsAdputer = new NewsAdputer(mnewsBean, options_base, mLayoutUtil);
+                                mNewsAdputer = new NewsAdputer(resultsEntityList, options_base, mLayoutUtil);
                                 //监听recyclerView的上滑动的位置来进行积蓄的加载更多的数据
                                 mMyRecyclerView.addOnScrollListener(new RecyclerViewOnScroll(mNewsAdputer, PageFragment.this));
                                 mMyRecyclerView.setAdapter(mNewsAdputer);
                             } else {
-                                mNewsAdputer.notifyDataSetChanged();
+                                mFooterLinearlayout.setVisibility(View.GONE);
+                                mNewsAdputer.notif(resultsEntityList);
                             }
-                            mFooterLinearlayout.setVisibility(View.GONE);
+
                         } catch (Exception e) {
                             e.printStackTrace();
                             LogUtil.e("新闻解析异常" + e);

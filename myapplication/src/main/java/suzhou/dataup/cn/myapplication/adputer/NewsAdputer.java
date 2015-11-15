@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.util.List;
+
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.activity.CountActivity;
 import suzhou.dataup.cn.myapplication.bean.NewsBean;
@@ -28,12 +30,12 @@ public class NewsAdputer extends RecyclerView.Adapter<NewsAdputer.ItemViewHolder
     private static final int IS_HEADER = 2;
     private static final int IS_FOOTER = 3;
     private static final int IS_NORMAL = 1;
-    public NewsBean resultsEntityList;
+    public List<NewsBean.BodyEntity.ItemEntity> resultsEntityList;
     public DisplayImageOptions options_base;
     public LayoutUtil layoutUtil;
     String tempTime = "first";
 
-    public NewsAdputer(NewsBean resultsEntityList, DisplayImageOptions options_base, LayoutUtil layoutUtil) {
+    public NewsAdputer(List<NewsBean.BodyEntity.ItemEntity> resultsEntityList, DisplayImageOptions options_base, LayoutUtil layoutUtil) {
         this.resultsEntityList = resultsEntityList;
         this.options_base = options_base;
         this.layoutUtil = layoutUtil;
@@ -52,17 +54,16 @@ public class NewsAdputer extends RecyclerView.Adapter<NewsAdputer.ItemViewHolder
     public int getItemViewType(int position) {
         //代表是最后一个条目添加footview
         LogUtil.e("position" + position);
-        LogUtil.e("resultsEntityList.size()==" + resultsEntityList.body.item.size());
         return super.getItemViewType(position);
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         int itemViewType = viewHolder.getItemViewType();
-        ImageLoader.getInstance().displayImage(resultsEntityList.body.item.get(position).thumbnail, viewHolder.mIv, options_base);
-        viewHolder.mTextView.setText(resultsEntityList.body.item.get(position).title);
+        ImageLoader.getInstance().displayImage(resultsEntityList.get(position).thumbnail, viewHolder.mIv, options_base);
+        viewHolder.mTextView.setText(resultsEntityList.get(position).title);
         layoutUtil.drawViewFramLayout(viewHolder.rl, 1f, 0f, 0f, 0f);
-        viewHolder.mIv.setTag(resultsEntityList.body.item.get(position).commentsUrl + "," + resultsEntityList.body.item.get(position).title);
+        viewHolder.mIv.setTag(resultsEntityList.get(position).commentsUrl + "," + resultsEntityList.get(position).title);
         viewHolder.mIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +78,12 @@ public class NewsAdputer extends RecyclerView.Adapter<NewsAdputer.ItemViewHolder
 
     @Override
     public int getItemCount() {
-        return resultsEntityList.body.item.size();
+        return resultsEntityList.size();
+    }
+
+    public void notif(List<NewsBean.BodyEntity.ItemEntity> mnewsBean) {
+        this.resultsEntityList = mnewsBean;
+        notifyDataSetChanged();
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
