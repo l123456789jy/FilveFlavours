@@ -72,6 +72,11 @@
         </activity>
         <activity android:name=".activity.CountActivity">
         </activity>
+        <activity
+            android:name=".activity.CountViewPagerActivity"
+            android:label="@string/title_activity_count_view_pager"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

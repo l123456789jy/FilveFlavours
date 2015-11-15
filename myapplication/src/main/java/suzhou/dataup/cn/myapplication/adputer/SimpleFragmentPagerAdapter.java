@@ -16,7 +16,7 @@ import suzhou.dataup.cn.myapplication.fragment.WealFragment;
  */
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private String tabTitles[] = new String[]{"福利", "Android", "休息视频"};
+    private String tabTitles[] = new String[]{"福利", "Android", "新闻"};
     private Context context;
 
     public SimpleFragmentPagerAdapter(FragmentManager fm, Context context) {

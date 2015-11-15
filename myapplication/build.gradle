@@ -49,4 +49,5 @@ dependencies {
 // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex:rxjava:1.0.15'
     compile('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') exclude module: 'support-v4'
+    compile 'com.commit451:PhotoView:1.2.4'
 }

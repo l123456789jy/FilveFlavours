@@ -3,7 +3,6 @@ package suzhou.dataup.cn.myapplication.mangers;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.google.gson.Gson;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -27,16 +26,18 @@ import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
 public class OkHttpClientManager {
     private static OkHttpClientManager mInstance;
     private static OkHttpClient mOkHttpClient;
-    private Handler mDelivery;
-    private Gson mGson;
+    private static Handler mDelivery;
+
+
     private static final String TAG = "OkHttpClientManager";
+
     private OkHttpClientManager() {
         mOkHttpClient = new OkHttpClient();
         //cookie enabled
         mOkHttpClient.setCookieHandler(new CookieManager(null, CookiePolicy.ACCEPT_ORIGINAL_SERVER));
         mDelivery = new Handler(Looper.getMainLooper());
-        mGson = new Gson();
     }
+
     public static OkHttpClientManager getInstance() {
         if (mInstance == null) {
             synchronized (OkHttpClientManager.class) {
@@ -48,20 +49,10 @@ public class OkHttpClientManager {
         return mInstance;
     }
 
-    public static OkHttpClient getInstanceClient() {
-        if (mOkHttpClient == null) {
-            synchronized (OkHttpClient.class) {
-                if (mOkHttpClient == null) {
-                    mOkHttpClient = new OkHttpClient();
-                }
-            }
-        }
-        return mOkHttpClient;
-    }
     //封装get请求
     public static void get(String uri, final MyHttpCallBcak mMyHttpCallBcak) {
+        OkHttpClientManager.getInstance();
         //创建okHttpClient对象
-        OkHttpClient mOkHttpClient = OkHttpClientManager.getInstanceClient();
         //创建一个Request
         final Request request = new Request.Builder()
                 .url(uri)
@@ -71,13 +62,24 @@ public class OkHttpClientManager {
         //请求加入调度
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(Request request, IOException e) {
-                mMyHttpCallBcak.onFailure(request, e);
+            public void onFailure(final Request request, final IOException e) {
+                //直接运行在主线程！
+                mDelivery.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMyHttpCallBcak.onFailure(request, e);
+                    }
+                });
             }
 
             @Override
             public void onResponse(final Response response) throws IOException {
-                mMyHttpCallBcak.onResponse(response);
+                mDelivery.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMyHttpCallBcak.onResponse(response);
+                    }
+                });
             }
         });
     }
@@ -104,13 +106,24 @@ public class OkHttpClientManager {
         //请求加入调度
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(Request request, IOException e) {
-                mMyHttpCallBcak.onFailure(request, e);
+            public void onFailure(final Request request, final IOException e) {
+                //直接运行在主线程！
+                mDelivery.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMyHttpCallBcak.onFailure(request, e);
+                    }
+                });
             }
 
             @Override
             public void onResponse(final Response response) throws IOException {
-                mMyHttpCallBcak.onResponse(response);
+                mDelivery.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMyHttpCallBcak.onResponse(response);
+                    }
+                });
             }
         });
     }

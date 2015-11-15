@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -71,7 +72,7 @@ public abstract class BaseActivity extends FragmentActivity {
     public float ScreenTitle; // 标题栏与状态栏的高度占比
     public float ScreenTitle_title; // 标题栏的高度
     protected LayoutUtil mLayoutUtil;
-
+    public Gson mGson = new Gson();
     public BaseActivity(int layoutId) {
         super();
         this.layoutId = layoutId;

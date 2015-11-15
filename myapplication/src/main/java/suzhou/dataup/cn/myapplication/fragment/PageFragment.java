@@ -80,7 +80,9 @@ public class PageFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int i) {
-                mIndexTv.setText((i + 1) + "");
+                if (null != mIndexTv) {
+                    mIndexTv.setText((i + 1) + "");
+                }
             }
 
             @Override
@@ -130,10 +132,11 @@ public class PageFragment extends BaseFragment {
             @Override
             public void onNext(String s) {
                 try {
+                    LogUtil.e(s);
                     mImageViewList.clear();
                     JSONArray mJSONArray = new JSONArray(s);
                     ViewPagerBean mviewPagerBean = mGson.fromJson(mJSONArray.getString(0), ViewPagerBean.class);
-                    MyPagerAdapter mMyPagerAdapter = new MyPagerAdapter(mviewPagerBean.body.item, mLayoutUtil, getActivity(), mImageViewList, mTv, mTotalCount, mIndexTv);
+                    MyPagerAdapter mMyPagerAdapter = new MyPagerAdapter(mviewPagerBean.body.item, mLayoutUtil, getActivity(), mImageViewList, mTv, mTotalCount, mIndexTv, options_base);
                     mConvenientBanner.setAdapter(mMyPagerAdapter);
 
                 } catch (Exception e) {
