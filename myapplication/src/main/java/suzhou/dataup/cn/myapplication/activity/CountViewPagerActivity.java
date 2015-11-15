@@ -102,21 +102,31 @@ public class CountViewPagerActivity extends BaseActivity {
         OkHttpClientManager.get(uri, new MyHttpCallBcak() {
             @Override
             public void onFailure(Request request, IOException e) {
-                Toast.makeText(getApplicationContext(), "获取数据失败！", Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "获取数据失败！", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
-
             @Override
             public void onResponse(final Response response) {
-                try {
-                    mcountViewPagerBean = mGson.fromJson(response.body().string(), CountViewPagerBean.class);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                MyCountPagerAdapter MyCountPagerAdapter = new MyCountPagerAdapter(mcountViewPagerBean.body.slides, mLayoutUtil, options_base);
-                mConvenientBanner.setAdapter(MyCountPagerAdapter);
-                mIndexTv.setText(1 + "");
-                mTotalCount.setText("/" + mcountViewPagerBean.body.slides.size());
-                mTv.setText(mcountViewPagerBean.body.slides.get(0).description);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            mcountViewPagerBean = mGson.fromJson(response.body().string(), CountViewPagerBean.class);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        MyCountPagerAdapter MyCountPagerAdapter = new MyCountPagerAdapter(mcountViewPagerBean.body.slides, mLayoutUtil, options_base);
+                        mConvenientBanner.setAdapter(MyCountPagerAdapter);
+                        mIndexTv.setText(1 + "");
+                        mTotalCount.setText("/" + mcountViewPagerBean.body.slides.size());
+                        mTv.setText(mcountViewPagerBean.body.slides.get(0).description);
+                    }
+                });
+
             }
         });
 

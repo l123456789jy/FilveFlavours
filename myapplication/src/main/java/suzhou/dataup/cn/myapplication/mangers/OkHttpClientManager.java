@@ -51,35 +51,24 @@ public class OkHttpClientManager {
 
     //封装get请求
     public static void get(String uri, final MyHttpCallBcak mMyHttpCallBcak) {
-        OkHttpClientManager.getInstance();
+        OkHttpClientManager instance = OkHttpClientManager.getInstance();
         //创建okHttpClient对象
         //创建一个Request
         final Request request = new Request.Builder()
                 .url(uri)
                 .build();
         //new call
-        Call call = mOkHttpClient.newCall(request);
+        final Call call = mOkHttpClient.newCall(request);
         //请求加入调度
         call.enqueue(new Callback() {
             @Override
             public void onFailure(final Request request, final IOException e) {
-                //直接运行在主线程！
-                mDelivery.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mMyHttpCallBcak.onFailure(request, e);
-                    }
-                });
+                mMyHttpCallBcak.onFailure(request, e);
             }
 
             @Override
             public void onResponse(final Response response) throws IOException {
-                mDelivery.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mMyHttpCallBcak.onResponse(response);
-                    }
-                });
+                mMyHttpCallBcak.onResponse(response);
             }
         });
     }
@@ -102,28 +91,19 @@ public class OkHttpClientManager {
                 .post(builder.build())
                 .build();
         //new call
-        Call call = mOkHttpClient.newCall(request);
+        final Call call = mOkHttpClient.newCall(request);
         //请求加入调度
         call.enqueue(new Callback() {
             @Override
             public void onFailure(final Request request, final IOException e) {
                 //直接运行在主线程！
-                mDelivery.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mMyHttpCallBcak.onFailure(request, e);
-                    }
-                });
+                mMyHttpCallBcak.onFailure(request, e);
             }
 
             @Override
             public void onResponse(final Response response) throws IOException {
-                mDelivery.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mMyHttpCallBcak.onResponse(response);
-                    }
-                });
+
+                mMyHttpCallBcak.onResponse(response);
             }
         });
     }

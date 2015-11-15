@@ -60,12 +60,15 @@ public class AndroidFragment extends BaseFragment implements LodeMoreCallBack {
     TextView mLoadMoreTv;
     @InjectView(R.id.footer_linearlayout)
     LinearLayout mFooterLinearlayout;
+
     public AndroidFragment() {
         super(R.layout.fragment_weal);
     }
+
     @Override
     protected void initHead() {
     }
+
     @Override
     protected void initContent() {
         // 创建一个线性布局管理器
@@ -94,9 +97,11 @@ public class AndroidFragment extends BaseFragment implements LodeMoreCallBack {
     protected void initLocation() {
         getData(index);
     }
+
     @Override
     protected void initLogic() {
     }
+
     @Override
     protected void isShow() {
         if (mMyadputer != null) {
@@ -108,14 +113,17 @@ public class AndroidFragment extends BaseFragment implements LodeMoreCallBack {
             LogUtil.e("可见了");
         }
     }
+
     @Override
     protected void isGone() {
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
+
     //获取福利的数据
     private void getData(int index) {
         OkHttpClientManager.get(CountUri.BASE_URI + "/Android/20/" + index + "", new MyHttpCallBcak() {
@@ -129,11 +137,17 @@ public class AndroidFragment extends BaseFragment implements LodeMoreCallBack {
                     }
                 });
             }
+
             @Override
             public void onResponse(final Response response) {
                 try {
                     if (response != null) {
-                        HomeResoutBean homeResoutBean = mGson.fromJson(response.body().string(), HomeResoutBean.class);
+                        HomeResoutBean homeResoutBean = null;
+                        try {
+                            homeResoutBean = mGson.fromJson(response.body().string(), HomeResoutBean.class);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         List<HomeResoutBean.ResultsEntity> results = homeResoutBean.results;
                         for (HomeResoutBean.ResultsEntity result : results) {
                             mResultsEntityList.add(result);
@@ -169,7 +183,7 @@ public class AndroidFragment extends BaseFragment implements LodeMoreCallBack {
                         });
 
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

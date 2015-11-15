@@ -3,13 +3,24 @@ package suzhou.dataup.cn.myapplication.fragment;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -23,15 +34,16 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.adputer.MyPagerAdapter;
+import suzhou.dataup.cn.myapplication.adputer.NewsAdputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
+import suzhou.dataup.cn.myapplication.bean.NewsBean;
 import suzhou.dataup.cn.myapplication.bean.ViewPagerBean;
+import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
 import suzhou.dataup.cn.myapplication.constance.CountUri;
+import suzhou.dataup.cn.myapplication.listener.RecyclerViewOnScroll;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
@@ -39,7 +51,7 @@ import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 /**
  * 新闻界面
  */
-public class PageFragment extends BaseFragment {
+public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     Observable<String> stringObservable;
     @InjectView(R.id.convenientBanner)
     AutoScrollViewPager mConvenientBanner;
@@ -50,7 +62,23 @@ public class PageFragment extends BaseFragment {
     @InjectView(R.id.index_tv)
     TextView mIndexTv;
     public List<ImageView> mImageViewList = new ArrayList<>();
-
+    @InjectView(R.id.rl)
+    RelativeLayout mRl;
+    @InjectView(R.id.my_recycler_view)
+    RecyclerView mMyRecyclerView;
+    @InjectView(R.id.swipe_container)
+    SwipeRefreshLayout mSwipeContainer;
+    @InjectView(R.id.load_more_pb)
+    ProgressBar mLoadMorePb;
+    @InjectView(R.id.load_more_tv)
+    TextView mLoadMoreTv;
+    @InjectView(R.id.footer_linearlayout)
+    LinearLayout mFooterLinearlayout;
+    NewsBean mnewsBean;
+    NewsAdputer mNewsAdputer;
+    boolean isFirst = true;
+    public int index = 2;
+    HttpUtils mHttpUtils = new HttpUtils();
     public PageFragment() {
         super(R.layout.fragment_page);
     }
@@ -64,10 +92,30 @@ public class PageFragment extends BaseFragment {
     protected void initContent() {
         getNewsViewPagerData();
         mConvenientBanner.startAutoScroll();
+        // 创建一个线性布局管理器
+        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mMyRecyclerView.setLayoutManager(mLayoutManager);//设置线性的管理器！
+        //设置刷新时的不同的颜色！
+        mSwipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        //google官方的下拉刷新！
+        mSwipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                isFirst = true;
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        getNetData(2);
+                    }
+                }.start();
+            }
+        });
     }
 
     @Override
     protected void initLocation() {
+        getNetData(2);
 
     }
 
@@ -93,71 +141,38 @@ public class PageFragment extends BaseFragment {
 
     @Override
     protected void isShow() {
-
     }
 
     @Override
     protected void isGone() {
-
     }
 
     //获取头部的数据的数据
     private void getNewsViewPagerData() {
-        //目前不知道原因，如果这里不写成链式结构设置在子线程无效！
-        stringObservable = Observable.create(new Observable.OnSubscribe<String>() {
+        //在子线程中执行访问网络的操作
+        OkHttpClientManager.get(CountUri.Home_pager, new MyHttpCallBcak() {
             @Override
-            public void call(final Subscriber<? super String> subscriber) {
-                //在子线程中执行访问网络的操作
-                OkHttpClientManager.get(CountUri.Home_pager, new MyHttpCallBcak() {
+            public void onFailure(Request request, IOException e) {
+            }
+            @Override
+            public void onResponse(final Response response) {
+                getActivity().runOnUiThread(new Runnable() {
                     @Override
-                    public void onFailure(Request request, IOException e) {
-                        subscriber.onError(e);
-                    }
-
-                    @Override
-                    public void onResponse(final Response response) {
+                    public void run() {
                         try {
-                            subscriber.onNext(response.body().string());
-                        } catch (IOException e) {
+                            mImageViewList.clear();
+                            JSONArray mJSONArray = new JSONArray(response.body().string());
+                            ViewPagerBean mviewPagerBean = mGson.fromJson(mJSONArray.getString(0), ViewPagerBean.class);
+                            MyPagerAdapter mMyPagerAdapter = new MyPagerAdapter(mviewPagerBean.body.item, mLayoutUtil, getActivity(), mImageViewList, mTv, mTotalCount, mIndexTv, options_base);
+                            mConvenientBanner.setAdapter(mMyPagerAdapter);
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
-
                     }
                 });
-            }
-            //设置运行执行逻辑的时候在Io线程可以执行耗时的操作,回显结果在主线程！
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-        Subscriber<String> mySubscriber = new Subscriber<String>() {
-            //接收到网络的数据
-            @Override
-            public void onNext(String s) {
-                try {
-                    LogUtil.e(s);
-                    mImageViewList.clear();
-                    JSONArray mJSONArray = new JSONArray(s);
-                    ViewPagerBean mviewPagerBean = mGson.fromJson(mJSONArray.getString(0), ViewPagerBean.class);
-                    MyPagerAdapter mMyPagerAdapter = new MyPagerAdapter(mviewPagerBean.body.item, mLayoutUtil, getActivity(), mImageViewList, mTv, mTotalCount, mIndexTv, options_base);
-                    mConvenientBanner.setAdapter(mMyPagerAdapter);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    LogUtil.e("errow" + e + "");
-                }
 
             }
-
-            @Override
-            public void onCompleted() {
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Toast.makeText(getActivity(), "获取服务器数据失败。。", Toast.LENGTH_SHORT).show();
-            }
-        };
-        //myObservable订阅mySubscriber
-        stringObservable.subscribe(mySubscriber);
-
+        });
     }
 
     @Override
@@ -172,5 +187,57 @@ public class PageFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+    }
+
+    //加载更多
+    @Override
+    public void LodeMore() {
+        isFirst = false;
+        mFooterLinearlayout.setVisibility(View.VISIBLE);
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                getNetData(index++);
+            }
+        }.start();
+
+
+    }
+
+    public void getNetData(int index) {
+        mHttpUtils.send(HttpRequest.HttpMethod.GET, CountUri.NEWS_BASE_URI + index, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(final ResponseInfo<String> responseInfo) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSwipeContainer.setRefreshing(false);//刷新完毕!
+                        try {
+                            if (isFirst) {
+                                isFirst = false;
+                                JSONArray mJSONArray = new JSONArray(responseInfo.result.toString());
+                                mnewsBean = mGson.fromJson(mJSONArray.getString(0), NewsBean.class);
+                                mNewsAdputer = new NewsAdputer(mnewsBean, options_base, mLayoutUtil);
+                                //监听recyclerView的上滑动的位置来进行积蓄的加载更多的数据
+                                mMyRecyclerView.addOnScrollListener(new RecyclerViewOnScroll(mNewsAdputer, PageFragment.this));
+                                mMyRecyclerView.setAdapter(mNewsAdputer);
+                            } else {
+                                mNewsAdputer.notifyDataSetChanged();
+                            }
+                            mFooterLinearlayout.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            LogUtil.e("新闻解析异常" + e);
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(HttpException error, String msg) {
+                Toast.makeText(getActivity(), "获取数据失败！", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

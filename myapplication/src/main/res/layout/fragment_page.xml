@@ -3,34 +3,78 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
     >
-    <RelativeLayout android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
         <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
             android:id="@+id/convenientBanner"
             android:layout_width="fill_parent"
             android:layout_height="150dp"/>
         <TextView
-            android:layout_marginTop="120dp"
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="120dp"
             android:textColor="@android:color/white"/>
         <TextView
-            android:layout_marginTop="120dp"
             android:id="@+id/total_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="120dp"
             android:textColor="@android:color/white"/>
         <TextView
-            android:layout_marginTop="120dp"
             android:id="@+id/index_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
             android:layout_toLeftOf="@+id/total_count"
             android:text="1"
             android:textColor="@android:color/holo_red_dark"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_container"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <LinearLayout
+            android:id="@+id/footer_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#efefefef"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/load_more_pb"
+                style="@android:style/Widget.ProgressBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/load_more_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="正在加载..."/>
+        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
