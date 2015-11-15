@@ -2,6 +2,9 @@ package suzhou.dataup.cn.myapplication.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -40,7 +43,7 @@ public class CountViewPagerActivity extends BaseActivity {
     @InjectView(R.id.index_tv)
     TextView mIndexTv;
     CountViewPagerBean mcountViewPagerBean = null;
-
+    MyCountPagerAdapter MyCountPagerAdapter;
     public CountViewPagerActivity() {
         super(R.layout.activity_count_view_pager);
     }
@@ -98,6 +101,17 @@ public class CountViewPagerActivity extends BaseActivity {
         });
     }
 
+    public Handler mHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            MyCountPagerAdapter = new MyCountPagerAdapter(mcountViewPagerBean.body.slides, mLayoutUtil, options_base);
+            mConvenientBanner.setAdapter(MyCountPagerAdapter);
+            mIndexTv.setText(1 + "");
+            mTotalCount.setText("/" + mcountViewPagerBean.body.slides.size());
+            mTv.setText(mcountViewPagerBean.body.slides.get(0).description);
+        }
+    };
     public void getNetData() {
         OkHttpClientManager.get(uri, new MyHttpCallBcak() {
             @Override
@@ -111,21 +125,12 @@ public class CountViewPagerActivity extends BaseActivity {
             }
             @Override
             public void onResponse(final Response response) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            mcountViewPagerBean = mGson.fromJson(response.body().string(), CountViewPagerBean.class);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        MyCountPagerAdapter MyCountPagerAdapter = new MyCountPagerAdapter(mcountViewPagerBean.body.slides, mLayoutUtil, options_base);
-                        mConvenientBanner.setAdapter(MyCountPagerAdapter);
-                        mIndexTv.setText(1 + "");
-                        mTotalCount.setText("/" + mcountViewPagerBean.body.slides.size());
-                        mTv.setText(mcountViewPagerBean.body.slides.get(0).description);
-                    }
-                });
+                try {
+                    mcountViewPagerBean = mGson.fromJson(response.body().string(), CountViewPagerBean.class);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mHandler.sendEmptyMessage(0);
 
             }
         });

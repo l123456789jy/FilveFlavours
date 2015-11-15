@@ -79,6 +79,7 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     boolean isFirst = true;
     public int index = 2;
     HttpUtils mHttpUtils = new HttpUtils();
+    ViewPagerBean mviewPagerBean;
     public List<NewsBean.BodyEntity.ItemEntity> resultsEntityList = new ArrayList<>();
     public PageFragment() {
         super(R.layout.fragment_page);
@@ -90,7 +91,7 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     protected void initContent() {
         getNewsViewPagerData();
         getNetData(2);
-        mConvenientBanner.startAutoScroll();
+        // mConvenientBanner.startAutoScroll();
         // 创建一个线性布局管理器
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mMyRecyclerView.setLayoutManager(mLayoutManager);//设置线性的管理器！
@@ -128,6 +129,7 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
             public void onPageSelected(int i) {
                 if (null != mIndexTv) {
                     mIndexTv.setText((i + 1) + "");
+                    mTv.setText(mviewPagerBean.body.item.get(i).title);
                 }
             }
             @Override
@@ -157,9 +159,10 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
                         try {
                             mImageViewList.clear();
                             JSONArray mJSONArray = new JSONArray(response.body().string());
-                            ViewPagerBean mviewPagerBean = mGson.fromJson(mJSONArray.getString(0), ViewPagerBean.class);
+                            mviewPagerBean = mGson.fromJson(mJSONArray.getString(0), ViewPagerBean.class);
                             MyPagerAdapter mMyPagerAdapter = new MyPagerAdapter(mviewPagerBean.body.item, mLayoutUtil, getActivity(), mImageViewList, mTv, mTotalCount, mIndexTv, options_base);
                             mConvenientBanner.setAdapter(mMyPagerAdapter);
+                            mTv.setText(mviewPagerBean.body.item.get(0).title);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

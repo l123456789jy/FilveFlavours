@@ -71,7 +71,6 @@ public class MyPagerAdapter extends PagerAdapter {
     public Object instantiateItem(View arg0, int arg1) {
         ((ViewPager) arg0).addView(imageViewList.get(arg1), 0);
         ImageLoader.getInstance().displayImage(EntyList.get(arg1).thumbnail, imageViewList.get(arg1), options_base);
-        tv.setText(EntyList.get(arg1).title);
         totalCount.setText("/" + EntyList.size());
         imageViewList.get(arg1).setTag(EntyList.get(arg1).id);
         //vipager里面的点击事件
