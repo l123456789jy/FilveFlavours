@@ -90,7 +90,7 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     @Override
     protected void initContent() {
         getNewsViewPagerData();
-        getNetData(2);
+
         // mConvenientBanner.startAutoScroll();
         // 创建一个线性布局管理器
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -139,6 +139,8 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     }
     @Override
     protected void isShow() {
+        isFirst = true;
+        getNetData(2);
     }
     @Override
     protected void isGone() {
