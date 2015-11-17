@@ -46,8 +46,6 @@ import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.listener.RecyclerViewOnScroll;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
-
-
 /**
  * 新闻界面
  */
@@ -152,7 +150,6 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
             @Override
             public void onFailure(Request request, IOException e) {
             }
-
             @Override
             public void onResponse(final Response response) {
                 getActivity().runOnUiThread(new Runnable() {
@@ -170,7 +167,6 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
                         }
                     }
                 });
-
             }
         });
     }

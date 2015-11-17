@@ -3,4 +3,107 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- 纯色 -->
+    <color name="lucency">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="page_back_ef">#efefef</color>
+    <!-- 纯色 -->
+    <color name="title_color_bg">#15D280</color>
+    <color name="all_bg">#ffffff</color>
+    <color name="all_bg_gray">#efefef</color>
+    <color name="all_bg_fc">#fcfcfc</color>
+    <!-- 提示字体颜色 -->
+    <color name="hint_text_color">#9f9f9f</color>
+    <!-- 登陆注册 -->
+    <color name="login_register_line">#D0D0D0</color>
+    <color name="login_register_text">#838383</color>
+    <color name="login_register_text_hint">#c1c1c1</color>
+    <!-- 更多字体的颜色 -->
+    <color name="more_texcolor">#333333</color>
+    <color name="heard_texcolor">#9f9f9f</color>
+    <color name="heardnick_texcolor">#838383</color>
+
+    <!-- home -->
+    <color name="home_txt_b9cce3">#b9cce3</color>
+    <!-- home -->
+
+    <!-- chat -->
+    <color name="chat_recorder_hint_cancel">#80838383</color>
+    <!-- chat -->
+
+    <!-- 自查自测 -->
+    <color name="device_search_hint_00a2bb">#00a2bb</color>
+    <color name="device_search_hint_78">#787878</color>
+    <color name="trend_chat_hint_f46d43">#f46d43</color>
+    <color name="trend_health_hint_50">#505050</color>
+    <color name="trend_health_hint_content_83">#838383</color>
+    <color name="trend_chat_hint_3d">#3d3d3d</color>
+    <color name="trend_chat_hint_79">#797979</color>
+    <color name="device_hand_hint_31">#313131</color>
+    <color name="device_hand_hint_59">#595959</color>
+    <color name="device_measure_hint_00a2bb">#00a2bb</color>
+    <color name="device_measure_hint_ff0000">#ff0000</color>
+    <color name="device_measure_hint_33">#333333</color>
+    <color name="device_history_hint_50">#505050</color>
+    <color name="device_history_hint_83">#838383</color>
+    <color name="device_line_hint_D0">#D0D0D0</color>
+    <color name="device_sport_39">#393939</color>
+    <!-- 自查自测 -->
+
+    <!-- 健康在线 -->
+    <color name="doctor_list_item_title_00a2bb">#00a2bb</color>
+    <color name="doctor_list_item_per_name_33">#333333</color>
+    <color name="doctor_list_item_hint_83">#838383</color>
+
+    <color name="doctor_chat_describe_hint_c1">#c1c1c1</color>
+
+    <!-- 健康在线 -->
+
+
+    <!-- 说说 -->
+    <color name="discover_uname_text_color">#838383</color>
+    <color name="discover_title_text_color">#505050</color>
+    <color name="discover_num_text_color">#c1c1c1</color>
+    <!-- 食材 -->
+    <color name="food_desc">#505050</color>
+    <color name="food_detail">#838383</color>
+    <!-- 运动 -->
+    <color name="sport_chart_x">#FFFFFF</color>
+    <!-- Loading -->
+    <color name="loading_textcolor">#505050</color>
+    <color name="loading_hintcolor">#505050</color>
+    <color name="loading_numcolor">#ff4a83</color>
+    <color name="loading_unit_autocolor">#838383</color>
+    <!-- User -->
+    <color name="binding_phone_color_hint1">#505050</color>
+    <color name="binding_phone_color_hint2">#c1c1c1</color>
+    <color name="binding_phone_color_hint3">#9f9f9f</color>
+    <!-- 用户个人资料 -->
+    <color name="person_nick_tex_color">#FFFFFF</color>
+    <color name="personall_tex_color">#838383</color>
+    <color name="setnick_tex_color">#c1c1c1</color>
+    <!-- 我的好友 -->
+    <color name="friend_introduce">#838383</color>
+    <color name="friend_name">#505050</color>
+    <color name="friend_time">#c1c1c1</color>
+    <color name="chat_list_item_text_left">#505050</color>
+    <color name="chat_list_item_text_right">#ffffff</color>
+    <color name="chat_list_item_text_time">#ffffff</color>
+
+    <!-- 我的话题字体的颜色 -->
+    <color name="myfaver_texview_color">#838383</color>
+
+
+    <!--调理原则的字体颜色 -->
+    <color name="my_progname_texview">#838383</color>
+    <!-- 添加好友 -->
+    <color name="add_friend">#505050</color>
+    <!-- 医生详情-->
+    <color name="doctor_name_color">#FFE5E5</color>
+    <color name="depattments_name_color">#85efff</color>
+
+    <!-- 搜索的字体颜色-->
+    <color name="search_droug">#333333</color>
 </resources>
