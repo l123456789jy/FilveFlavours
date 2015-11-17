@@ -17,12 +17,7 @@ import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import suzhou.dataup.cn.myapplication.adputer.SimpleFragmentPagerAdapter;
-import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @InjectView(R.id.toolbar)
@@ -57,35 +52,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void initObse() {
-        //目前不知道原因，如果这里不写成链式结构设置在子线程无效！
-        Observable<String> stringObservable = Observable.create(new Observable.OnSubscribe<String>() {
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                subscriber.onNext("Hello, world!");
-                subscriber.onCompleted();
-                LogUtil.e("mySubscribersssss" + Thread.currentThread().getName());
-            }
-            //设置运行执行逻辑的时候在Io线程可以执行耗时的操作,回显结果在主线程！
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-        Subscriber<String> mySubscriber = new Subscriber<String>() {
-            @Override
-            public void onNext(String s) {
-                System.out.println(s);
-                LogUtil.e("mySubscriber" + s + Thread.currentThread().getName());
-            }
-
-            @Override
-            public void onCompleted() {
-            }
-
-            @Override
-            public void onError(Throwable e) {
-            }
-        };
-        //myObservable订阅mySubscriber
-        stringObservable.subscribe(mySubscriber);
-    }
 
     private void initCount() {
         //实现和侧滑栏联动效果

@@ -13,6 +13,8 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.lang.reflect.InvocationTargetException;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
@@ -32,6 +34,11 @@ public class CountActivity extends BaseActivity {
     @InjectView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbar;
 
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+
     public CountActivity() {
         super(R.layout.activity_count);
     }
@@ -46,6 +53,14 @@ public class CountActivity extends BaseActivity {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setSupportZoom(true);
+        webSettings.setPluginState(WebSettings.PluginState.ON);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setDefaultTextEncodingName("UTF-8");
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setDomStorageEnabled(true);
+        //  webSettings.setUserAgentString("Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; zh-tw) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16");
         mWebview.requestFocusFromTouch();
     }
 
@@ -74,12 +89,46 @@ public class CountActivity extends BaseActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            mWebview.getClass().getMethod("onPause").invoke(mWebview, (Object[]) null);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            mWebview.getClass().getMethod("onResume").invoke(mWebview, (Object[]) null);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     protected void initLogic() {
         mWebview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
+                showToast(url);
                 return true;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
             }
         });
         mWebview.setWebChromeClient(new WebChromeClient() {
@@ -104,11 +153,14 @@ public class CountActivity extends BaseActivity {
             }
         });
     }
-
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebview.canGoBack()) {
+
             mWebview.goBack();
             return true;
+        } else {
+
+            finish();
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -118,5 +170,8 @@ public class CountActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.inject(this);
+
     }
+
 }
+

@@ -48,6 +48,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE."/>
 
     <application
+        android:layerType="hardware"
+        android:hardwareAccelerated="true"
         android:name=".contex.ApplicationData"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -70,7 +72,8 @@
             android:name=".activity.AppealActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activity.CountActivity">
+        <activity
+            android:name=".activity.CountActivity">
         </activity>
         <activity
             android:name=".activity.CountViewPagerActivity"
