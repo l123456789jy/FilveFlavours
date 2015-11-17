@@ -1,5 +1,6 @@
 # FilveFlavours
 ##该项目其中接口采用了干活集中营api开发 详情：http://gank.io/api
+- 整体框架采用 okhttp+rxandroid+UIL+GSON+material design设计
 ![](https://github.com/l123456789jy/FilveFlavours/blob/master/GIF.gif)
 License
 =======
