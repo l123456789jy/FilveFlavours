@@ -1,5 +1,5 @@
 # FilveFlavours
-
+##该项目其中接口采用了干活集中营api开发 详情：![http://gank.io/api](http://gank.io/api)
 ![](https://github.com/l123456789jy/FilveFlavours/blob/master/GIF.gif)
 License
 =======
