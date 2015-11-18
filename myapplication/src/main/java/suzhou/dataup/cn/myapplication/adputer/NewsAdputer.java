@@ -88,7 +88,6 @@ public class NewsAdputer extends RecyclerView.Adapter<NewsAdputer.ItemViewHolder
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 }
-
                 @Override
                 public void onPageSelected(int position) {
                     if (null != viewHolder.mindex_tv) {
@@ -96,7 +95,6 @@ public class NewsAdputer extends RecyclerView.Adapter<NewsAdputer.ItemViewHolder
                         viewHolder.mTextView2.setText(EntyList.get(position).title);
                     }
                 }
-
                 @Override
                 public void onPageScrollStateChanged(int state) {
                 }
