@@ -2,7 +2,6 @@ package suzhou.dataup.cn.myapplication.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lidroid.xutils.HttpUtils;
@@ -32,10 +28,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import rx.Observable;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.adputer.MyPagerAdapter;
 import suzhou.dataup.cn.myapplication.adputer.NewsAdputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.NewsBean;
@@ -51,25 +45,11 @@ import suzhou.dataup.cn.myapplication.utiles.LogUtil;
  */
 public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     Observable<String> stringObservable;
-    @InjectView(R.id.convenientBanner)
-    AutoScrollViewPager mConvenientBanner;
-    @InjectView(R.id.tv)
-    TextView mTv;
-    @InjectView(R.id.total_count)
-    TextView mTotalCount;
-    @InjectView(R.id.index_tv)
-    TextView mIndexTv;
     public List<ImageView> mImageViewList = new ArrayList<>();
-    @InjectView(R.id.rl)
-    RelativeLayout mRl;
     @InjectView(R.id.my_recycler_view)
     RecyclerView mMyRecyclerView;
     @InjectView(R.id.swipe_container)
     SwipeRefreshLayout mSwipeContainer;
-    @InjectView(R.id.load_more_pb)
-    ProgressBar mLoadMorePb;
-    @InjectView(R.id.load_more_tv)
-    TextView mLoadMoreTv;
     @InjectView(R.id.footer_linearlayout)
     LinearLayout mFooterLinearlayout;
     NewsBean mnewsBean;
@@ -88,7 +68,6 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
     @Override
     protected void initContent() {
         getNewsViewPagerData();
-
         // mConvenientBanner.startAutoScroll();
         // 创建一个线性布局管理器
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -119,21 +98,6 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
 
     @Override
     protected void initLogic() {
-        mConvenientBanner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-            }
-            @Override
-            public void onPageSelected(int i) {
-                if (null != mIndexTv) {
-                    mIndexTv.setText((i + 1) + "");
-                    mTv.setText(mviewPagerBean.body.item.get(i).title);
-                }
-            }
-            @Override
-            public void onPageScrollStateChanged(int i) {
-            }
-        });
     }
     @Override
     protected void isShow() {
@@ -159,9 +123,6 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
                             mImageViewList.clear();
                             JSONArray mJSONArray = new JSONArray(response.body().string());
                             mviewPagerBean = mGson.fromJson(mJSONArray.getString(0), ViewPagerBean.class);
-                            MyPagerAdapter mMyPagerAdapter = new MyPagerAdapter(mviewPagerBean.body.item, mLayoutUtil, getActivity(), mImageViewList, mTv, mTotalCount, mIndexTv, options_base);
-                            mConvenientBanner.setAdapter(mMyPagerAdapter);
-                            mTv.setText(mviewPagerBean.body.item.get(0).title);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -218,7 +179,7 @@ public class PageFragment extends BaseFragment implements LodeMoreCallBack {
                             }
                             if (isFirst) {
                                 isFirst = false;
-                                mNewsAdputer = new NewsAdputer(resultsEntityList, options_base, mLayoutUtil);
+                                mNewsAdputer = new NewsAdputer(mviewPagerBean.body.item, mImageViewList, resultsEntityList, options_base, mLayoutUtil);
                                 //监听recyclerView的上滑动的位置来进行积蓄的加载更多的数据
                                 mMyRecyclerView.addOnScrollListener(new RecyclerViewOnScroll(mNewsAdputer, PageFragment.this));
                                 mMyRecyclerView.setAdapter(mNewsAdputer);

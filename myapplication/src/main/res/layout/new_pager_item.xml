@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
+            android:id="@+id/convenientBanner"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"/>
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="120dp"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:id="@+id/total_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="120dp"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:id="@+id/index_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:layout_toLeftOf="@+id/total_count"
+            android:text="1"
+            android:textColor="@android:color/holo_red_dark"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -5,9 +5,9 @@ package suzhou.dataup.cn.myapplication.adputer;
  * 邮箱：906514731@qq.com
  */
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -30,14 +30,14 @@ import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
 public class MyPagerAdapter extends PagerAdapter {
     public List<ViewPagerBean.BodyEntity.ItemEntity> EntyList;
     public LayoutUtil mlayoutUtil;
-    public FragmentActivity activity;
+    public Context activity;
     public List<ImageView> imageViewList;
     public TextView tv;
     public TextView totalCount;
     public TextView indexTv;
     public DisplayImageOptions options_base;
 
-    public MyPagerAdapter(List<ViewPagerBean.BodyEntity.ItemEntity> item, LayoutUtil layoutUtil, FragmentActivity activity, List<ImageView> imageViewList, TextView tv, TextView totalCount, TextView indexTv, DisplayImageOptions options_base) {
+    public MyPagerAdapter(List<ViewPagerBean.BodyEntity.ItemEntity> item, LayoutUtil layoutUtil, Context activity, List<ImageView> imageViewList, TextView tv, TextView totalCount, TextView indexTv, DisplayImageOptions options_base) {
         this.EntyList = item;
         this.mlayoutUtil = layoutUtil;
         this.activity = activity;
@@ -61,7 +61,6 @@ public class MyPagerAdapter extends PagerAdapter {
     @Override
     public void finishUpdate(View arg0) {
     }
-
     @Override
     public int getCount() {
         return imageViewList.size();
@@ -78,6 +77,7 @@ public class MyPagerAdapter extends PagerAdapter {
             @Override
             public void onClick(View v) {
                 Intent mIntent = new Intent(activity, CountViewPagerActivity.class);
+                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mIntent.putExtra(ConstanceData.VIEW_PAGER_COUNT_URI, v.getTag().toString());
                 activity.startActivity(mIntent);
             }
