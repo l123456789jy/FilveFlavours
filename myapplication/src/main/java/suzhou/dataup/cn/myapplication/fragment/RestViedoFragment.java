@@ -158,20 +158,24 @@ public class RestViedoFragment extends BaseFragment implements LodeMoreCallBack 
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mFooterLinearlayout.setVisibility(View.GONE);
-                                    mSwipeContainer.setRefreshing(false);//刷新完毕!
-                                    recyclerView.setAdapter(mMyadputer);
-                                    recyclerView.setItemAnimator(new DefaultItemAnimator());
-                                    isFirstLoda = false;
+                                    if (null != mFooterLinearlayout) {
+                                        mFooterLinearlayout.setVisibility(View.GONE);
+                                        mSwipeContainer.setRefreshing(false);//刷新完毕!
+                                        recyclerView.setAdapter(mMyadputer);
+                                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+                                        isFirstLoda = false;
+                                    }
                                 }
                             });
                         } else {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mFooterLinearlayout.setVisibility(View.GONE);
-                                    mSwipeContainer.setRefreshing(false);//刷新完毕!
-                                    mMyadputer.notifyDataSetChanged();
+                                    if (null != mFooterLinearlayout) {
+                                        mFooterLinearlayout.setVisibility(View.GONE);
+                                        mSwipeContainer.setRefreshing(false);//刷新完毕!
+                                        mMyadputer.notifyDataSetChanged();
+                                    }
                                 }
                             });
 
