@@ -48,12 +48,12 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE."/>
 
     <application
-        android:layerType="hardware"
-        android:hardwareAccelerated="true"
         android:name=".contex.ApplicationData"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:layerType="hardware"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -73,8 +73,8 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:theme="@style/JK.SwipeBack.Transparent.Theme"
-            android:name=".activity.CountActivity">
+            android:name=".activity.CountActivity"
+            android:theme="@style/JK.SwipeBack.Transparent.Theme">
         </activity>
         <activity
             android:name=".activity.CountViewPagerActivity"
@@ -82,5 +82,11 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
-
+    <service
+        android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
+        android:enabled="false"
+        android:process=":leakcanary"/>
+    <service
+        android:name="com.squareup.leakcanary.DisplayLeakService"
+        android:enabled="false"/>
 </manifest>

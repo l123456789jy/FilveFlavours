@@ -20,6 +20,7 @@ import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -181,6 +182,7 @@ public abstract class BaseFragment extends Fragment {
         //myObservable订阅mySubscriber
         stringObservable.subscribe(mySubscriber);
     }
+
     protected abstract void initHead();
 
     /**
@@ -207,6 +209,14 @@ public abstract class BaseFragment extends Fragment {
      * fragment不可见
      */
     protected abstract void isGone();
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //检测内存泄漏的代码
+        RefWatcher refWatcher = ApplicationData.getRefWatcher(ApplicationData.context);
+        refWatcher.watch(this);
+    }
 
     /**
      * 避免每次都进行强转

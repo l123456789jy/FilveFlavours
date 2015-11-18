@@ -13,6 +13,8 @@ import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.io.File;
 
@@ -129,6 +131,7 @@ public class ApplicationData extends Application {
      * 1代表运动指南，2代表症状！
      */
     public static String types = null;
+    public static RefWatcher mrefWatcher;
 
     @Override
     public void onCreate() {
@@ -138,12 +141,20 @@ public class ApplicationData extends Application {
         WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         screenWidth = wm.getDefaultDisplay().getWidth();
         screenHeight = wm.getDefaultDisplay().getHeight();
-
         context = getApplicationContext();
         initImageLoader(context);
+        //初始化LeakCanary
+
+        mrefWatcher = LeakCanary.install(this);
         LayoutCast.init(this);
         LogUtil.e("屏幕的宽度" + screenWidth);
         LogUtil.e("屏幕的高度" + screenHeight);
+    }
+
+    //获取RefWatcher
+    public static RefWatcher getRefWatcher(Context context) {
+        ApplicationData application = (ApplicationData) context.getApplicationContext();
+        return mrefWatcher;
     }
 
     /**

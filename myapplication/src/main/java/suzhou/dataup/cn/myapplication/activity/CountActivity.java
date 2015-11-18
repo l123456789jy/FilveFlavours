@@ -63,7 +63,6 @@ public class CountActivity extends BaseActivity {
         //  webSettings.setUserAgentString("Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; zh-tw) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16");
         mWebview.requestFocusFromTouch();
     }
-
     @Override
     protected void initContent() {
         String count = getIntent().getStringExtra(ConstanceData.COUNT_URI);
@@ -72,7 +71,6 @@ public class CountActivity extends BaseActivity {
         mCollapsingToolbar.setTitle(split[1]);
         mWebview.loadUrl(split[0]);
     }
-
     @Override
     protected void initLocation() {
         //监听返回键
@@ -87,7 +85,6 @@ public class CountActivity extends BaseActivity {
             }
         });
     }
-
     @Override
     protected void onPause() {
         super.onPause();
