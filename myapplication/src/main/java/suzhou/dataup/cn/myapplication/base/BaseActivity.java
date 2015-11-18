@@ -5,9 +5,10 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
+import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,8 +33,8 @@ import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
 
-public abstract class BaseActivity extends FragmentActivity {
-
+public abstract class BaseActivity extends FragmentActivity implements SlidingPaneLayout.PanelSlideListener {
+    public final static String TAG = BaseActivity.class.getCanonicalName();
     protected View view; // 当前界面的根
     private int layoutId; // 当前界面对应的布局
 
@@ -50,7 +52,20 @@ public abstract class BaseActivity extends FragmentActivity {
     public DisplayImageOptions options_roundness;
     //***************图片操作
 
+    @Override
+    public void onPanelClosed(View view) {
 
+    }
+
+    @Override
+    public void onPanelOpened(View view) {
+        finish();
+        this.overridePendingTransition(0, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void onPanelSlide(View view, float v) {
+    }
     /**
      * Toast的对象！
      */
@@ -80,9 +95,9 @@ public abstract class BaseActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        initSwipeBackFinish();
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_PROGRESS);// 让进度条显示在标题栏上
         Log.d("spoort_list", "BaseActivity oncreate方法");
         view = View.inflate(this, layoutId, null);
         ButterKnife.inject(this, view);
@@ -96,6 +111,49 @@ public abstract class BaseActivity extends FragmentActivity {
         initLogic(); // 初始化逻辑
     }
 
+    /**
+     * 初始化滑动返回
+     * 想要实现滑动返回的效果
+     * 1.主题该activity的主题为透明
+     * 2.SlidingPaneLayout就行了！
+     */
+    private void initSwipeBackFinish() {
+        if (isSupportSwipeBack()) {
+            SlidingPaneLayout slidingPaneLayout = new SlidingPaneLayout(this);
+            //通过反射改变mOverhangSize的值为0，这个mOverhangSize值为菜单到右边屏幕的最短距离，默认
+            //是32dp，现在给它改成0
+            try {
+                //属性
+                Field f_overHang = SlidingPaneLayout.class.getDeclaredField("mOverhangSize");
+                f_overHang.setAccessible(true);
+                f_overHang.set(slidingPaneLayout, 0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            slidingPaneLayout.setPanelSlideListener(this);
+            slidingPaneLayout.setSliderFadeColor(getResources().getColor(android.R.color.transparent));
+
+            View leftView = new View(this);
+            leftView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            slidingPaneLayout.addView(leftView, 0);
+
+            ViewGroup decor = (ViewGroup) getWindow().getDecorView();
+            ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
+            decorChild.setBackgroundColor(getResources().getColor(android.R.color.white));
+            decor.removeView(decorChild);
+            decor.addView(slidingPaneLayout);
+            slidingPaneLayout.addView(decorChild, 1);
+        }
+    }
+
+    /**
+     * 是否支持滑动返回
+     *
+     * @return
+     */
+    protected boolean isSupportSwipeBack() {
+        return true;
+    }
     /**
      * 初始化头中的各个控件,以及公共控件ImageLoader
      */

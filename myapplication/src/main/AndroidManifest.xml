@@ -73,6 +73,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:theme="@style/JK.SwipeBack.Transparent.Theme"
             android:name=".activity.CountActivity">
         </activity>
         <activity
