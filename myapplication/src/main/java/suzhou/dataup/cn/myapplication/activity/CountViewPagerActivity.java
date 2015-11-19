@@ -57,6 +57,14 @@ public class CountViewPagerActivity extends BaseActivity {
 
     }
 
+    /**
+     * 是否支持滑动返回
+     *
+     * @return
+     */
+    protected boolean isSupportSwipeBack() {
+        return false;
+    }
     @Override
     protected void initContent() {
         uri = getIntent().getStringExtra(ConstanceData.VIEW_PAGER_COUNT_URI);
