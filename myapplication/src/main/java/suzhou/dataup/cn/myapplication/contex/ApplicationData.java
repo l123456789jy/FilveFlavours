@@ -25,11 +25,11 @@ import com.squareup.leakcanary.RefWatcher;
 import java.io.File;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import suzhou.dataup.cn.myapplication.constance.Directory;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
 public class ApplicationData extends Application {
-
     public static int screenWidth;
     public static int screenHeight;
     /**
@@ -40,96 +40,12 @@ public class ApplicationData extends Application {
      * 标题栏的高度占比
      */
     public static float ScreenTitle_title;
-    /**
-     * 硬件类型，0，血糖；1，血压；2，运动
-     */
-    public static int DeviceType = 1;
-    /**
-     * 硬件运动模式是否断开连接
-     */
-    public static boolean DeviceClose = true;
-
-    //**********************chat
-    /**
-     * 标记是否显示showPhone中的删除按钮。0，显示；1，删除
-     */
-    public static int isShowPhone = 0;
-    /**
-     * 聊天对象的头像地址
-     */
-    public static String myChatFriend_headerAddress = "";
-    /**
-     * 聊天对象的用户名
-     */
-    public static String myChatFriend_name = "";
-    /**
-     * 记录聊天对象（ID）
-     */
-    public static String myChatFriend_id = "";
-    /**
-     * 记录聊天（ID）咨询id
-     */
-    public static String myChat_id = "";
-    /**
-     * 用户头像
-     */
-    public static String myChat_header = "";
-    /**
-     * 医生头像
-     */
-    public static String dcChat_header = "";
-    //**********************chat
-
-    /**
-     * 生日 年
-     */
-    public static String dcBirthYear = "1990";
-    /**
-     * 生日 月
-     */
-    public static String dcBirthMonth = "11";
-    /**
-     * 生日 日
-     */
-    public static String dcBirthDay = "16";
 
     public static Context context;
-    public static String imei; // imei号
-    public static int loginType = -1;    //登录状态  -1不在线，0 server登录，1 qq，2 微博
     /**
      * 记录播放（ID）视频的id
      */
     public static String VideId = "";
-    /**
-     * 记录播放地址
-     */
-    public static String HeardUri = "";
-    /**
-     * 记录播放的标题
-     */
-    public static String Title = "";
-    /**
-     * 记录图片的地址
-     */
-    public static String ImaeView = "";
-    /**
-     * 记录删除视频的ids
-     */
-    public static String ids = "";
-    /**
-     * 记录药品的名字
-     */
-    public static String drugName = "";
-
-    /**
-     * 这个是保存运动指南de
-     */
-    public static String id = null;
-    public static String type = null;
-    /**
-     * 1代表运动指南，2代表症状！
-     */
-    public static String types = null;
     public static RefWatcher mrefWatcher;
     public LocationClient mLocationClient;
     public MyLocationListener mMyLocationListener;
@@ -146,7 +62,6 @@ public class ApplicationData extends Application {
         context = getApplicationContext();
         initImageLoader(context);
         //初始化LeakCanary
-
         mrefWatcher = LeakCanary.install(this);
         LayoutCast.init(this);
         initLocation();
@@ -271,6 +186,7 @@ public class ApplicationData extends Application {
                     sb.append(p.getId() + " " + p.getName() + " " + p.getRank());
                 }
             }
+            EventBus.getDefault().post(location);
             LogUtil.e("BaiduLocationApiDem", sb.toString() + location.getCity());
         }
     }

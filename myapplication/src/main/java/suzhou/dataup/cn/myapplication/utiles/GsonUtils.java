@@ -2,11 +2,6 @@ package suzhou.dataup.cn.myapplication.utiles;
 
 import com.google.gson.Gson;
 
-/**
- * Author:  liangjin.bai
- * Email: bailiangjin@gmail.com
- * Create Time: 2015/9/22 14:21
- */
 public class GsonUtils {
 
     private volatile static GsonUtils instance;

@@ -68,6 +68,8 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:name=".contex.ApplicationData"
         android:allowBackup="true"
@@ -102,6 +104,7 @@
             android:label="@string/title_activity_count_view_pager"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
             android:enabled="false"
@@ -110,12 +113,11 @@
             android:name="com.squareup.leakcanary.DisplayLeakService"
             android:enabled="false"/>
         <service
-            android:name="suzhou.dataup.cn.myapplication.service.MyService"
+            android:name=".service.MyService"
             android:enabled="true"
             android:priority="1000"
             android:process=":remote">
         </service>
-
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -130,14 +132,25 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="zSYAeFrXWQurEBGeskGTHwYq"/>
 
-        <receiver android:name="suzhou.dataup.cn.myapplication.receiver.BootBroadcastReceiver">
+        <receiver android:name=".receiver.BootBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.TIME_TICK"/>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
+
                 <category android:name="android.intent.category.HOME"/>
             </intent-filter>
         </receiver>
 
+        <service
+            android:name=".service.NotificationIntentService"
+            android:exported="false">
+        </service>
+
+        <activity
+            android:name=".activity.WeatherActivity"
+            android:label="@string/title_activity_weather"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

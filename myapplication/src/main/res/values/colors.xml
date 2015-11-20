@@ -106,4 +106,6 @@
 
     <!-- 搜索的字体颜色-->
     <color name="search_droug">#333333</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
