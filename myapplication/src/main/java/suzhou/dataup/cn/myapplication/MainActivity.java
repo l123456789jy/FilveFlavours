@@ -1,6 +1,7 @@
 package suzhou.dataup.cn.myapplication;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.adputer.SimpleFragmentPagerAdapter;
+import suzhou.dataup.cn.myapplication.receiver.BootBroadcastReceiver;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @InjectView(R.id.toolbar)
@@ -67,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(viewPager);
         //
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        //注册广播
+        BootBroadcastReceiver mBootBroadcastReceiver = new BootBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_TIME_TICK);
+        registerReceiver(mBootBroadcastReceiver, filter);
     }
 
     //监听侧滑栏的点击条目位置

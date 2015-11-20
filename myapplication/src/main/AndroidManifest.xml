@@ -46,7 +46,28 @@
     <!-- 获取应用的栈的个数！ -->
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE."/>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION">
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION">
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS">
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_LOGS">
+    </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <application
         android:name=".contex.ApplicationData"
         android:allowBackup="true"
@@ -81,12 +102,42 @@
             android:label="@string/title_activity_count_view_pager"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <service
+            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
+            android:enabled="false"
+            android:process=":leakcanary"/>
+        <service
+            android:name="com.squareup.leakcanary.DisplayLeakService"
+            android:enabled="false"/>
+        <service
+            android:name="suzhou.dataup.cn.myapplication.service.MyService"
+            android:enabled="true"
+            android:priority="1000"
+            android:process=":remote">
+        </service>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2">
+                </action>
+            </intent-filter>
+        </service>
+        <!-- meta-data需要写在application中 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="zSYAeFrXWQurEBGeskGTHwYq"/>
+
+        <receiver android:name="suzhou.dataup.cn.myapplication.receiver.BootBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_TICK"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+
     </application>
-    <service
-        android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
-        android:enabled="false"
-        android:process=":leakcanary"/>
-    <service
-        android:name="com.squareup.leakcanary.DisplayLeakService"
-        android:enabled="false"/>
+
 </manifest>
