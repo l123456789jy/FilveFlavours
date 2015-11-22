@@ -29,7 +29,7 @@ import suzhou.dataup.cn.myapplication.bean.WeatrherBean;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
 import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
-import suzhou.dataup.cn.myapplication.db.LocationCode;
+import suzhou.dataup.cn.myapplication.dbs.LocationCode;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
 import suzhou.dataup.cn.myapplication.utiles.GsonUtils;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
