@@ -92,6 +92,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/JK.SwipeBack.Transparent.Theme"
             android:name=".activity.AppealActivity"
             android:screenOrientation="portrait">
         </activity>
