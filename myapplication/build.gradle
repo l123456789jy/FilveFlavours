@@ -33,6 +33,9 @@ allprojects {
     repositories {
         jcenter() //注：repository 1
         mavenCentral()  //注：repository 2
+        maven {
+            url "https://jitpack.io"
+        }
     }
 }
 dependencies {
@@ -63,4 +66,5 @@ dependencies {
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
     compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
+    compile 'com.github.zzz40500:AndroidSweetSheet:1.1.0'
 }
