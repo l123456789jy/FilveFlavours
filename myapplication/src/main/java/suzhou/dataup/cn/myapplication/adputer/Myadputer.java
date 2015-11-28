@@ -44,12 +44,11 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
         View view = View.inflate(parent.getContext(), R.layout.fragment_weal_item, null);
         return new ItemViewHolder(view);//创建一个viewholder,然后将view传递进来！
     }
-
     @Override
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         viewHolder.mImageView.setTag(position + "");
         ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView, options_base);
-        layoutUtil.drawViewLayout(viewHolder.mImageView, 0.4f, 0.6f, 0f, 0f);
+        layoutUtil.drawViewLayout(viewHolder.mImageView, 0.4f, 0.4f, 0f, 0f);
         viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

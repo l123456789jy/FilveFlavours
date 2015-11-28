@@ -33,11 +33,14 @@ import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
+import suzhou.dataup.cn.myapplication.callback.OkCallback;
 import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.listener.RecyclerViewOnScroll;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
+import suzhou.dataup.cn.myapplication.paser.OkJsonParser;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 import suzhou.dataup.cn.myapplication.utiles.SwipContainerUtiles;
+import suzhou.dataup.cn.myapplication.utiles.ToastUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -112,8 +115,6 @@ public class WealFragment extends BaseFragment implements LodeMoreCallBack {
         //利用反射进行设置自动刷新！
         SwipContainerUtiles.setRefreshing(mSwipeContainer, true, true);
     }
-
-
     @Override
     protected void initLogic() {
     }
@@ -142,72 +143,36 @@ public class WealFragment extends BaseFragment implements LodeMoreCallBack {
 
     //获取福利的数据
     private void getData(int index) {
-        OkHttpClientManager.get(CountUri.BASE_URI + "/福利/10/" + index + "", new MyHttpCallBcak() {
+        OkHttpClientManager.getResoutAnty(CountUri.BASE_URI + "/福利/10/" + index + "", new OkCallback<HomeResoutBean>(new OkJsonParser<HomeResoutBean>() {
+        }) {
             @Override
-            public void onFailure(Request request, IOException e) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mSwipeContainer.setRefreshing(false);//刷新完毕!
+            public void onSuccess(int code, HomeResoutBean homeResoutBean) {
+                if (null != homeResoutBean) {
+                    List<HomeResoutBean.ResultsEntity> results = homeResoutBean.results;
+                    for (HomeResoutBean.ResultsEntity result : results) {
+                        mResultsEntityList.add(result);
                     }
-                });
+                    if (isFirstLoda) {
+                        mFooterLinearlayout.setVisibility(View.GONE);
+                        mSwipeContainer.setRefreshing(false);//刷新完毕!
+                        recyclerView.setAdapter(mMyadputer);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+                        isFirstLoda = false;
+                    } else {
+                        mFooterLinearlayout.setVisibility(View.GONE);
+                        mSwipeContainer.setRefreshing(false);//刷新完毕!
+                        mMyadputer.notifyDataSetChanged();
+                    }
+                }
             }
 
             @Override
-            public void onResponse(final Response response) {
-                try {
-                    if (response != null) {
-                        HomeResoutBean homeResoutBean = mGson.fromJson(response.body().string(), HomeResoutBean.class);
-                        List<HomeResoutBean.ResultsEntity> results = homeResoutBean.results;
-                        for (HomeResoutBean.ResultsEntity result : results) {
-                            mResultsEntityList.add(result);
-                        }
-                        if (homeResoutBean.results.size() == 0) {
-                            lastVisibleItem = 0;
-                            return;
-                        }
-                        if (isFirstLoda) {
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mFooterLinearlayout.setVisibility(View.GONE);
-                                    mSwipeContainer.setRefreshing(false);//刷新完毕!
-
-                                    recyclerView.setAdapter(mMyadputer);
-                                    //目前不知道什么原因倒置刷新之后头部下移。设置刷新完毕之后直接移动到首个postion
-                                    recyclerView.scrollToPosition(0);
-                                    isFirstLoda = false;
-                                    LogUtil.e("xiala刷新了！" + recyclerView.getChildCount());
-                                }
-                            });
-                        } else {
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mFooterLinearlayout.setVisibility(View.GONE);
-                                    mSwipeContainer.setRefreshing(false);//刷新完毕!
-                                    mMyadputer.notifyDataSetChanged();
-                                    LogUtil.e("dibu刷新了！");
-                                }
-                            });
-
-                        }
-                    } else {
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getActivity(), "获取服务器数据失败。。。", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            public void onFailure(Throwable e) {
+                mSwipeContainer.setRefreshing(false);//刷新完毕!
+                ToastUtils.show("获取服务端数据失败");
             }
         });
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view

@@ -29,10 +29,13 @@ import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
+import suzhou.dataup.cn.myapplication.callback.OkCallback;
 import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.listener.RecyclerViewOnScroll;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
+import suzhou.dataup.cn.myapplication.paser.OkJsonParser;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
+import suzhou.dataup.cn.myapplication.utiles.ToastUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -124,68 +127,34 @@ public class AndroidFragment extends BaseFragment implements LodeMoreCallBack {
         ButterKnife.reset(this);
     }
 
-    //获取福利的数据
+    //获取Android的数据
     private void getData(int index) {
-        OkHttpClientManager.get(CountUri.BASE_URI + "/Android/20/" + index + "", new MyHttpCallBcak() {
+        OkHttpClientManager.getResoutAnty(CountUri.BASE_URI + "/Android/20/" + index + "", new OkCallback<HomeResoutBean>(new OkJsonParser<HomeResoutBean>() {
+        }) {
             @Override
-            public void onFailure(Request request, IOException e) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //   mFooterLinearlayout.setVisibility(View.GONE);
+            public void onSuccess(int code, HomeResoutBean homeResoutBean) {
+                if (null != homeResoutBean) {
+                    List<HomeResoutBean.ResultsEntity> results = homeResoutBean.results;
+                    for (HomeResoutBean.ResultsEntity result : results) {
+                        mResultsEntityList.add(result);
+                    }
+                    if (isFirstLoda) {
+                        mFooterLinearlayout.setVisibility(View.GONE);
                         mSwipeContainer.setRefreshing(false);//刷新完毕!
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(final Response response) {
-                try {
-                    if (response != null) {
-                        HomeResoutBean homeResoutBean = null;
-                        try {
-                            homeResoutBean = mGson.fromJson(response.body().string(), HomeResoutBean.class);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        List<HomeResoutBean.ResultsEntity> results = homeResoutBean.results;
-                        for (HomeResoutBean.ResultsEntity result : results) {
-                            mResultsEntityList.add(result);
-                        }
-                        if (isFirstLoda) {
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mFooterLinearlayout.setVisibility(View.GONE);
-                                    mSwipeContainer.setRefreshing(false);//刷新完毕!
-                                    recyclerView.setAdapter(mMyadputer);
-                                    recyclerView.setItemAnimator(new DefaultItemAnimator());
-                                    isFirstLoda = false;
-                                }
-                            });
-                        } else {
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mFooterLinearlayout.setVisibility(View.GONE);
-                                    mSwipeContainer.setRefreshing(false);//刷新完毕!
-                                    mMyadputer.notifyDataSetChanged();
-                                }
-                            });
-
-                        }
+                        recyclerView.setAdapter(mMyadputer);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+                        isFirstLoda = false;
                     } else {
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getActivity(), "获取服务器数据失败。。。", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
+                        mFooterLinearlayout.setVisibility(View.GONE);
+                        mSwipeContainer.setRefreshing(false);//刷新完毕!
+                        mMyadputer.notifyDataSetChanged();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
+            }
+            @Override
+            public void onFailure(Throwable e) {
+                mSwipeContainer.setRefreshing(false);//刷新完毕!
+                ToastUtils.show("获取服务端数据失败");
             }
         });
     }

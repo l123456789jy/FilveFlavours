@@ -27,17 +27,13 @@ public class OkHttpClientManager {
     private static OkHttpClientManager mInstance;
     private static OkHttpClient mOkHttpClient;
     private static Handler mDelivery;
-
-
     private static final String TAG = "OkHttpClientManager";
-
     private OkHttpClientManager() {
         mOkHttpClient = new OkHttpClient();
         //cookie enabled
         mOkHttpClient.setCookieHandler(new CookieManager(null, CookiePolicy.ACCEPT_ORIGINAL_SERVER));
         mDelivery = new Handler(Looper.getMainLooper());
     }
-
     public static OkHttpClientManager getInstance() {
         if (mInstance == null) {
             synchronized (OkHttpClientManager.class) {
@@ -48,7 +44,6 @@ public class OkHttpClientManager {
         }
         return mInstance;
     }
-
     //封装get请求
     public static void get(String uri, final MyHttpCallBcak mMyHttpCallBcak) {
         OkHttpClientManager instance = OkHttpClientManager.getInstance();
@@ -73,8 +68,22 @@ public class OkHttpClientManager {
         });
     }
 
-    //封装post请求
-    public static void post(String uri, HashMap mHashMap, final MyHttpCallBcak mMyHttpCallBcak) {
+    //========================================================================================================
+    //封装直接返回实体类的结果
+    public static void getResoutAnty(String uri, final Callback mMyHttpCallBcak) {
+        OkHttpClientManager instance = OkHttpClientManager.getInstance();
+        //创建okHttpClient对象
+        //创建一个Request
+        final Request request = new Request.Builder()
+                .url(uri)
+                .build();
+        //new call
+        final Call call = mOkHttpClient.newCall(request);
+        call.enqueue(mMyHttpCallBcak);
+    }
+
+    //封装post请求直接返回实体类的结果
+    public static void post(String uri, HashMap mHashMap, final Callback mMyHttpCallBcak) {
         //创建okHttpClient对象
         OkHttpClient mOkHttpClient = new OkHttpClient();
         FormEncodingBuilder builder = new FormEncodingBuilder();
@@ -92,20 +101,6 @@ public class OkHttpClientManager {
                 .build();
         //new call
         final Call call = mOkHttpClient.newCall(request);
-        //请求加入调度
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(final Request request, final IOException e) {
-                //直接运行在主线程！
-                mMyHttpCallBcak.onFailure(request, e);
-            }
-
-            @Override
-            public void onResponse(final Response response) throws IOException {
-
-                mMyHttpCallBcak.onResponse(response);
-            }
-        });
+        call.enqueue(mMyHttpCallBcak);
     }
-
 }

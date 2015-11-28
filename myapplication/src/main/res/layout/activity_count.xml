@@ -17,7 +17,7 @@
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:statusBarScrim="?attr/colorPrimary"
-            >
+        >
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:layout_below="@id/toolbars"
-                />
+            />
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -51,12 +51,18 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/myProgressBar"/>
+
     </android.support.v4.widget.NestedScrollView>
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/flat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_discuss"
         app:backgroundTintMode="multiply"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|end|right"></android.support.design.widget.FloatingActionButton>
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
