@@ -3,6 +3,8 @@
 ##目前正在逐步的添加新的功能进去。。。。。。
 - 整体框架采用 leakcanary+okhttp+rxandroid+UIL+GSON+material design设计
 ![](https://github.com/l123456789jy/FilveFlavours/blob/master/GIF.gif)
+##APK下载地址
+![](https://github.com/l123456789jy/FilveFlavours/blob/master/liantu.png)
 License
 =======
 
