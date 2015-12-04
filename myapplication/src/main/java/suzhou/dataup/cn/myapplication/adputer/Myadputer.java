@@ -5,6 +5,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -30,6 +32,7 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public LayoutUtil layoutUtil;
     @InjectView(R.id.tv)
     ImageView mTv;
+    private int lastPosition = -1;
 
     public Myadputer(List<HomeResoutBean.ResultsEntity> resultsEntityList, DisplayImageOptions options_base, LayoutUtil layoutUtil) {
         this.resultsEntityList = resultsEntityList;
@@ -44,11 +47,13 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
         View view = View.inflate(parent.getContext(), R.layout.fragment_weal_item, null);
         return new ItemViewHolder(view);//创建一个viewholder,然后将view传递进来！
     }
+
     @Override
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         viewHolder.mImageView.setTag(position + "");
         ImageLoader.getInstance().displayImage(resultsEntityList.get(position).url, viewHolder.mImageView, options_base);
         layoutUtil.drawViewLayout(viewHolder.mImageView, 0.4f, 0.4f, 0f, 0f);
+        setAnimation(viewHolder.mCardView, position);
         viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,9 +69,21 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     public long getItemId(int position) {
         return position;
     }
+
     @Override
     public int getItemCount() {
         return resultsEntityList.size();
+    }
+
+    //播放完毕要及时的消除动画
+    @Override
+    public void onViewDetachedFromWindow(ItemViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        holder.mCardView.clearAnimation();
+    }
+
+    public void restartAnimationPostion() {
+        lastPosition = -1;
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -78,6 +95,15 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
             ImageView viewById = (ImageView) itemView.findViewById(R.id.tv);
             mCardView = (CardView) itemView.findViewById(R.id.card_view);
             mImageView = viewById;
+        }
+    }
+
+    private void setAnimation(View viewToAnimate, int position) {
+        if (position > lastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(), R
+                    .anim.item_reversal);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
         }
     }
 }

@@ -9,30 +9,25 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import it.gmariotti.recyclerview.adapter.AlphaAnimatorAdapter;
+import it.gmariotti.recyclerview.itemanimator.SlideInOutRightItemAnimator;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.adputer.Myadputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;
-import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
 import suzhou.dataup.cn.myapplication.callback.OkCallback;
 import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.listener.RecyclerViewOnScroll;
@@ -69,7 +64,7 @@ public class WealFragment extends BaseFragment implements LodeMoreCallBack {
     TextView mLoadMoreTv;
     @InjectView(R.id.footer_linearlayout)
     LinearLayout mFooterLinearlayout;
-
+    int postion = 0;
     public WealFragment() {
         super(R.layout.fragment_weal);
     }
@@ -92,7 +87,9 @@ public class WealFragment extends BaseFragment implements LodeMoreCallBack {
         //设置item之间的间隔
         SpacesItemDecoration decoration = new SpacesItemDecoration(16);
         recyclerView.addItemDecoration(decoration);
+        recyclerView.setHasFixedSize(true);
         mMyadputer = new Myadputer(mResultsEntityList, options_base, mLayoutUtil);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         //设置刷新时的不同的颜色！
         mSwipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         //google官方的下拉刷新！
@@ -153,15 +150,16 @@ public class WealFragment extends BaseFragment implements LodeMoreCallBack {
                         mResultsEntityList.add(result);
                     }
                     if (isFirstLoda) {
+                        mMyadputer.restartAnimationPostion();
                         mFooterLinearlayout.setVisibility(View.GONE);
                         mSwipeContainer.setRefreshing(false);//刷新完毕!
                         recyclerView.setAdapter(mMyadputer);
-                        recyclerView.setItemAnimator(new DefaultItemAnimator());
                         isFirstLoda = false;
+                        // mMyadputer.notifyItemRangeChanged(0,10);
                     } else {
                         mFooterLinearlayout.setVisibility(View.GONE);
                         mSwipeContainer.setRefreshing(false);//刷新完毕!
-                        mMyadputer.notifyDataSetChanged();
+                        mMyadputer.notifyItemRangeInserted(mMyadputer.getItemCount() - 10, mResultsEntityList.size());
                     }
                 }
             }
