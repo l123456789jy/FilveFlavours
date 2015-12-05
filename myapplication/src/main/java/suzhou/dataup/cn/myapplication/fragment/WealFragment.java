@@ -21,8 +21,6 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import it.gmariotti.recyclerview.adapter.AlphaAnimatorAdapter;
-import it.gmariotti.recyclerview.itemanimator.SlideInOutRightItemAnimator;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.adputer.Myadputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
@@ -40,10 +38,6 @@ import suzhou.dataup.cn.myapplication.utiles.ToastUtils;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link WealFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link WealFragment#newInstance} factory method to
- * create an instance of this fragment.
  * 福利的界面
  */
 public class WealFragment extends BaseFragment implements LodeMoreCallBack {
