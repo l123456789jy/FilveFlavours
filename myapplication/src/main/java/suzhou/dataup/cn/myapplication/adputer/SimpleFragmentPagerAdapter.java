@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import suzhou.dataup.cn.myapplication.fragment.AndroidFragment;
+import suzhou.dataup.cn.myapplication.fragment.HotFragment;
 import suzhou.dataup.cn.myapplication.fragment.PageFragment;
 import suzhou.dataup.cn.myapplication.fragment.RestViedoFragment;
 import suzhou.dataup.cn.myapplication.fragment.WealFragment;
@@ -17,7 +18,7 @@ import suzhou.dataup.cn.myapplication.fragment.WealFragment;
  */
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private String tabTitles[] = new String[]{"福利", "Android", "新闻", "休息视频"};
+    private String tabTitles[] = new String[]{"福利", "安卓", "新闻", "视频","热门"};
     private Context context;
 
     public SimpleFragmentPagerAdapter(FragmentManager fm, Context context) {
@@ -44,9 +45,10 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
             case 3:
                 RestViedoFragment mRestViedoFragment = new RestViedoFragment();
                 return mRestViedoFragment;
-            //拓展资源
+            //热门
             case 4:
-
+                HotFragment mHotFragment = new HotFragment();
+                return mHotFragment;
                 //前端
             case 5:
 
