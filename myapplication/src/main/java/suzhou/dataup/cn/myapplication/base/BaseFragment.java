@@ -2,12 +2,15 @@ package suzhou.dataup.cn.myapplication.base;
 
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -33,6 +36,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
+import suzhou.dataup.cn.myapplication.mangers.SystemBarTintManager;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
@@ -84,9 +88,23 @@ public abstract class BaseFragment extends Fragment {
         initContent(); // 初始化当前界面的主要内容
         initLocation(); // 初始化空间位置
         initLogic(); // 初始化逻辑
+        setStateBarColor(R.color.colorPrimaryDark);
         return view;
     }
-
+    //设置状态栏的颜色只能兼容到4.4
+    protected void setStateBarColor(int resId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window win =getActivity().getWindow();
+            WindowManager.LayoutParams winParams = win.getAttributes();
+            final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+            winParams.flags |= bits;
+            win.setAttributes(winParams);
+            SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(resId);
+            tintManager.setStatusBarDarkMode(true, getActivity());
+        }
+    }
     /**
      * 初始化头中的各个控件,以及公共控件ImageLoader
      */

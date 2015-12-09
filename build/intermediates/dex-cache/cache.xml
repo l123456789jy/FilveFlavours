@@ -2,46 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\5.1.1\b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8\butterknife-5.1.1.jar"
+        jar="F:\myDemoWork\FilveFlavours\myapplication\libs\universal-image-loader-1.9.2-with-sources.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\butterknife-5.1.1-4e4ce574f3d72998b594448756183a3048e0c38d.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\library-2.4.0-dd460f45d27a359687729c3c169358b1eda3100b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\gson-2.3.1-3d67bc6296728dce11d45e3fe02a4d0f0bf336e9.jar" />
-    </item>
-    <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-0375d73cc456e014590db22e2fd82a7109d74cf7.jar" />
-    </item>
-    <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-62dd19a578400f86546a857ec1846446ce50a570.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.4.0\ddd166d01b3158d1c00576d29f7ed15c030df719\eventbus-2.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ddd166d01b3158d1c00576d29f7ed15c030df719">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\eventbus-2.4.0-03e25c6b3178abc8ecb48b05be1f281aa0724b29.jar" />
+        sha1="111169c43b8a601f571585f75d998e6027e48ff4">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.2-with-sources-1ab7d9c8c53e1c7e35fea4823323901fb2d3de42.jar" />
     </item>
     <item
         jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.haha\haha\1.3\d2c832f9d14a11c79f58a7ee2e10526a12152c72\haha-1.3.jar"
@@ -51,25 +16,11 @@
         <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\haha-1.3-2de8629f8471de321d4f185494a8420d2b7db5be.jar" />
     </item>
     <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.0.1\jars\classes.jar"
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.github.traex.rippleeffect\library\1.3\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-f1450d7fc0f8d46449ceaee75a2ad271e242979c.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-analyzer\1.3.1\325e7401a7ea16918eb39ba8baad8fd5561a55d3\leakcanary-analyzer-1.3.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="325e7401a7ea16918eb39ba8baad8fd5561a55d3">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\leakcanary-analyzer-1.3.1-bff71017ec040d96040347847022b3e63832fca9.jar" />
-    </item>
-    <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-e0f822be2b1e7c6fea7fae306f7b055f572fab71.jar" />
+        sha1="ee17feb34ce104bc17d1a1e64346d7f779ebb066">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-a8fac8636fd7494de5fa32ecc38d7f2d3c4d3a5c.jar" />
     </item>
     <item
         jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.0.15\f0ab8b7c8010cad33b8debda5d09d233571dc486\rxjava-1.0.15.jar"
@@ -79,32 +30,11 @@
         <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\rxjava-1.0.15-bbaabab32f40df212e98d5d0789bc92a0db318d8.jar" />
     </item>
     <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.jiechic.library\xUtils\2.6.14\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\2.0.0-beta1\53b5be42d6cf719ac1431b9aa9a4d5ab78856148\retrofit-2.0.0-beta1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="fe75606aa9485cd20177894c204291a79a0cc7ab">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-ee81b58958fee91bc0b83524efcf5c3cfe0c6e08.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\okio-1.6.0-c410569bd3ae660f2a7eceb3af69efc833b46b70.jar" />
-    </item>
-    <item
-        jar="D:\AndroidSdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-23725262b13291678f3813d5cf338e3475eb2675.jar" />
-    </item>
-    <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-c0521432a7a1d72019c3f99221e09fc5c2d0de53.jar" />
+        sha1="53b5be42d6cf719ac1431b9aa9a4d5ab78856148">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta1-2a246013f72e7f822841554e76be0fcf38abbfad.jar" />
     </item>
     <item
         jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\design\22.2.1\jars\classes.jar"
@@ -114,11 +44,18 @@
         <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-e35c87190f7e46f5acb28444f2eb8b85b955f34c.jar" />
     </item>
     <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\libs\BaiduLBS_Android.jar"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\converter-gson\2.0.0-beta1\3de922cdbf9bb3a6f72f6b6b3327cfb348cf445a\converter-gson-2.0.0-beta1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="281fa5e3b9baf6647388489782c9a9c0df56097a">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\BaiduLBS_Android-945530cdf2e5950bacca95834f3945ba3cbc9a58.jar" />
+        sha1="3de922cdbf9bb3a6f72f6b6b3327cfb348cf445a">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta1-4b8965cfc9a3986bddc52edae41f41ed28366350.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-analyzer\1.3.1\325e7401a7ea16918eb39ba8baad8fd5561a55d3\leakcanary-analyzer-1.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="325e7401a7ea16918eb39ba8baad8fd5561a55d3">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\leakcanary-analyzer-1.3.1-bff71017ec040d96040347847022b3e63832fca9.jar" />
     </item>
     <item
         jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\cn.trinea.android.view.autoscrollviewpager\android-auto-scroll-view-pager\1.1.2\8ad9237a8b0965696ea32ca9c1de173e082eaad4\android-auto-scroll-view-pager-1.1.2.jar"
@@ -128,39 +65,25 @@
         <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\android-auto-scroll-view-pager-1.1.2-6e827b208cea3438277445fb3288ac11d202ec7d.jar" />
     </item>
     <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.github.traex.rippleeffect\library\1.3\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="ee17feb34ce104bc17d1a1e64346d7f779ebb066">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-a8fac8636fd7494de5fa32ecc38d7f2d3c4d3a5c.jar" />
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\okio-1.6.0-c410569bd3ae660f2a7eceb3af69efc833b46b70.jar" />
     </item>
     <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\2.0.0-beta1\53b5be42d6cf719ac1431b9aa9a4d5ab78856148\retrofit-2.0.0-beta1.jar"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="53b5be42d6cf719ac1431b9aa9a4d5ab78856148">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta1-2a246013f72e7f822841554e76be0fcf38abbfad.jar" />
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\library-2.4.0-dd460f45d27a359687729c3c169358b1eda3100b.jar" />
     </item>
     <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3.1\jars\classes.jar"
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="9066b6d4e2536b49e3b58aa301fd925247032df0">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-d16534b0278fe55078d5f5281dfb982c290e640f.jar" />
-    </item>
-    <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.getbase\floatingactionbutton\1.10.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f40cf334cdc8b098b74312e21c7741c6eefbeb0e">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-242ec0f51687218d28acd631de92990e389db124.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\converter-gson\2.0.0-beta1\3de922cdbf9bb3a6f72f6b6b3327cfb348cf445a\converter-gson-2.0.0-beta1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="3de922cdbf9bb3a6f72f6b6b3327cfb348cf445a">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta1-4b8965cfc9a3986bddc52edae41f41ed28366350.jar" />
+        sha1="e1fa5e1123997a55e3ed65b44892993ff4b58cfe">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-917beeeff32ae2c09d016f544700acf4f24ee5fa.jar" />
     </item>
     <item
         jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.github.mmin18.layoutcast\library\1.1.5\jars\classes.jar"
@@ -170,39 +93,25 @@
         <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-dbd29866d0df03ba071d452602e03c4e0846d3a5.jar" />
     </item>
     <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9066b6d4e2536b49e3b58aa301fd925247032df0">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-d16534b0278fe55078d5f5281dfb982c290e640f.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.jiechic.library\xUtils\2.6.14\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fe75606aa9485cd20177894c204291a79a0cc7ab">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-ee81b58958fee91bc0b83524efcf5c3cfe0c6e08.jar" />
+    </item>
+    <item
         jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
         <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-fa43c7852dab22ee0e21d7b8dfccc70b01313805.jar" />
-    </item>
-    <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.github.zzz40500\AndroidSweetSheet\1.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8e6e30a296f144126c62da545452456950e56b27">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-507e154accb0bff9f32887fb87aae1f3f7a31e5f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\okhttp-2.5.0-c5a573687790528960a2cdb5042d396490d51899.jar" />
-    </item>
-    <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.commit451\PhotoView\1.2.4\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="890be6e1e56a883c9b407a11e067a61886dec123">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-4e44ed3c2c17653a8fca26f63a76b7baf624d232.jar" />
-    </item>
-    <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\libs\universal-image-loader-1.9.2-with-sources.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="111169c43b8a601f571585f75d998e6027e48ff4">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.2-with-sources-1ab7d9c8c53e1c7e35fea4823323901fb2d3de42.jar" />
     </item>
     <item
         jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-watcher\1.3.1\6904771474c058abfc5912c13d12b02754712165\leakcanary-watcher-1.3.1.jar"
@@ -212,11 +121,102 @@
         <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\leakcanary-watcher-1.3.1-52ed60c3cfefe5efa98f7dc7c1aa6859c236acc5.jar" />
     </item>
     <item
-        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.1\jars\classes.jar"
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.commit451\PhotoView\1.2.4\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="e1fa5e1123997a55e3ed65b44892993ff4b58cfe">
-        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-917beeeff32ae2c09d016f544700acf4f24ee5fa.jar" />
+        sha1="890be6e1e56a883c9b407a11e067a61886dec123">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-4e44ed3c2c17653a8fca26f63a76b7baf624d232.jar" />
+    </item>
+    <item
+        jar="D:\AndroidSdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-23725262b13291678f3813d5cf338e3475eb2675.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-0375d73cc456e014590db22e2fd82a7109d74cf7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.4.0\ddd166d01b3158d1c00576d29f7ed15c030df719\eventbus-2.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ddd166d01b3158d1c00576d29f7ed15c030df719">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\eventbus-2.4.0-03e25c6b3178abc8ecb48b05be1f281aa0724b29.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-e0f822be2b1e7c6fea7fae306f7b055f572fab71.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-f1450d7fc0f8d46449ceaee75a2ad271e242979c.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-c0521432a7a1d72019c3f99221e09fc5c2d0de53.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\libs\BaiduLBS_Android.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="281fa5e3b9baf6647388489782c9a9c0df56097a">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\BaiduLBS_Android-945530cdf2e5950bacca95834f3945ba3cbc9a58.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.github.zzz40500\AndroidSweetSheet\1.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8e6e30a296f144126c62da545452456950e56b27">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-507e154accb0bff9f32887fb87aae1f3f7a31e5f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\5.1.1\b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8\butterknife-5.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\butterknife-5.1.1-4e4ce574f3d72998b594448756183a3048e0c38d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\okhttp-2.5.0-c5a573687790528960a2cdb5042d396490d51899.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\gson-2.3.1-3d67bc6296728dce11d45e3fe02a4d0f0bf336e9.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-62dd19a578400f86546a857ec1846446ce50a570.jar" />
+    </item>
+    <item
+        jar="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\exploded-aar\com.getbase\floatingactionbutton\1.10.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f40cf334cdc8b098b74312e21c7741c6eefbeb0e">
+        <dex dex="F:\myDemoWork\FilveFlavours\myapplication\build\intermediates\pre-dexed\debug\classes-242ec0f51687218d28acd631de92990e389db124.jar" />
     </item>
 
 </items>

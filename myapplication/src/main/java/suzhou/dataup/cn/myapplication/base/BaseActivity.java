@@ -2,6 +2,7 @@ package suzhou.dataup.cn.myapplication.base;
 
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +10,8 @@ import android.support.v4.widget.SlidingPaneLayout;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -32,6 +35,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
+import suzhou.dataup.cn.myapplication.mangers.SystemBarTintManager;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;
 
 public abstract class BaseActivity extends FragmentActivity implements SlidingPaneLayout.PanelSlideListener {
@@ -110,8 +114,22 @@ public abstract class BaseActivity extends FragmentActivity implements SlidingPa
         initContent(); // 初始化当前界面的主要内容
         initLocation(); // 初始化空间位置
         initLogic(); // 初始化逻辑
+        setStateBarColor(R.color.colorPrimaryDark);
     }
-
+    //设置状态栏的颜色只能兼容到4.4
+    protected void setStateBarColor(int resId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window win =getWindow();
+            WindowManager.LayoutParams winParams = win.getAttributes();
+            final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+            winParams.flags |= bits;
+            win.setAttributes(winParams);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(resId);
+            tintManager.setStatusBarDarkMode(true, this);
+        }
+    }
     /**
      * 初始化滑动返回
      * 想要实现滑动返回的效果
