@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="xUtils-2.6.14">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/myapplication/build/intermediates/exploded-aar/com.jiechic.library/xUtils/2.6.14/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/myapplication/build/intermediates/exploded-aar/com.jiechic.library/xUtils/2.6.14/res" />
+      <root url="jar://$PROJECT_DIR$/myapplication/build/intermediates/exploded-aar/com.jiechic.library/xUtils/2.6.14/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

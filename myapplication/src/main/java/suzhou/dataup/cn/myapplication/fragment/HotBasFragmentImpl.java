@@ -38,12 +38,12 @@ import suzhou.dataup.cn.myapplication.utiles.ToastUtils;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HotBasFragmentImp.OnFragmentInteractionListener} interface
+ * {@link HotBasFragmentImpl.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link HotBasFragmentImp#newInstance} factory method to
+ * Use the {@link HotBasFragmentImpl#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HotBasFragmentImp extends BaseFragment implements LodeMoreCallBack {
+public class HotBasFragmentImpl extends BaseFragment implements LodeMoreCallBack {
     private int layoutId; // 当前界面对应的布局
     int lastVisibleItem = 0;
     int index = 1;
@@ -63,7 +63,8 @@ public class HotBasFragmentImp extends BaseFragment implements LodeMoreCallBack 
     @InjectView(R.id.footer_linearlayout)
     LinearLayout mFooterLinearlayout;
     int postion = 0;
-    public HotBasFragmentImp(int layoutId) {
+
+    public HotBasFragmentImpl(int layoutId) {
         super(layoutId);
     }
 
