@@ -24,7 +24,7 @@ import java.util.Map;
 
 import de.greenrobot.event.EventBus;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.activity.WeatherActivity;
+import suzhou.dataup.cn.myapplication.ui.activity.WeatherActivity;
 import suzhou.dataup.cn.myapplication.bean.WeatrherBean;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
 import suzhou.dataup.cn.myapplication.constance.CountUri;

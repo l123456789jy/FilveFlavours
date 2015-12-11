@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.fragment;
+package suzhou.dataup.cn.myapplication.ui.activity.fragment;
 
 import android.annotation.TargetApi;
 import android.graphics.Rect;
@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.adputer.Myadputer;
+import suzhou.dataup.cn.myapplication.ui.activity.adputer.Myadputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;

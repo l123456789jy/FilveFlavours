@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.adputer;
+package suzhou.dataup.cn.myapplication.ui.activity.adputer;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +14,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import java.util.List;
 
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.activity.CountActivity;
+import suzhou.dataup.cn.myapplication.ui.activity.CountActivity;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.constance.ConstanceData;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;

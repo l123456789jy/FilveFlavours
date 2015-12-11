@@ -93,15 +93,15 @@
         </activity>
         <activity
             android:theme="@style/JK.SwipeBack.Transparent.Theme"
-            android:name=".activity.AppealActivity"
+            android:name=".ui.activity.AppealActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activity.CountActivity"
+            android:name=".ui.activity.CountActivity"
             android:theme="@style/JK.SwipeBack.Transparent.Theme">
         </activity>
         <activity
-            android:name=".activity.CountViewPagerActivity"
+            android:name=".ui.activity.CountViewPagerActivity"
             android:label="@string/title_activity_count_view_pager"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -148,7 +148,7 @@
         </service>
 
         <activity
-            android:name=".activity.WeatherActivity"
+            android:name=".ui.activity.WeatherActivity"
             android:label="@string/title_activity_weather"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

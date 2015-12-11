@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.adputer;
+package suzhou.dataup.cn.myapplication.ui.activity.adputer;
 
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -16,7 +16,7 @@ import java.util.List;
 
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.activity.AppealActivity;
+import suzhou.dataup.cn.myapplication.ui.activity.AppealActivity;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.constance.ConstanceData;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
@@ -101,7 +101,7 @@ public class Myadputer extends RecyclerView.Adapter<Myadputer.ItemViewHolder> {
     private void setAnimation(View viewToAnimate, int position) {
         if (position > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(), R
-                    .anim.item_reversal);
+                    .anim.item_bottom_in);
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }

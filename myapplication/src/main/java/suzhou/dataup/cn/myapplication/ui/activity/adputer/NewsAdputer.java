@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.adputer;
+package suzhou.dataup.cn.myapplication.ui.activity.adputer;
 
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
@@ -16,7 +16,7 @@ import java.util.List;
 
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.activity.CountActivity;
+import suzhou.dataup.cn.myapplication.ui.activity.CountActivity;
 import suzhou.dataup.cn.myapplication.bean.NewsBean;
 import suzhou.dataup.cn.myapplication.bean.ViewPagerBean;
 import suzhou.dataup.cn.myapplication.constance.ConstanceData;

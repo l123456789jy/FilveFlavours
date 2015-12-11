@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.activity;
+package suzhou.dataup.cn.myapplication.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.adputer.MyCountPagerAdapter;
+import suzhou.dataup.cn.myapplication.ui.activity.adputer.MyCountPagerAdapter;
 import suzhou.dataup.cn.myapplication.base.BaseActivity;
 import suzhou.dataup.cn.myapplication.bean.CountViewPagerBean;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;

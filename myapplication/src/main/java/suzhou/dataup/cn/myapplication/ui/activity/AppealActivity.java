@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.activity;
+package suzhou.dataup.cn.myapplication.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;

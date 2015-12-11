@@ -1,18 +1,14 @@
-package suzhou.dataup.cn.myapplication.fragment;
+package suzhou.dataup.cn.myapplication.ui.activity.fragment;
 
 import android.support.v4.app.Fragment;
 
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.http.client.HttpRequest;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-import com.squareup.okhttp.internal.http.HttpMethod;
 
 import java.io.IOException;
 
 import suzhou.dataup.cn.myapplication.R;
 import suzhou.dataup.cn.myapplication.callback.MyHttpCallBcak;
-import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 

@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.adputer;
+package suzhou.dataup.cn.myapplication.ui.activity.adputer;
 
 /**
  * 作者：liujingyuan on 2015/11/14 23:54
@@ -19,7 +19,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
-import suzhou.dataup.cn.myapplication.activity.CountViewPagerActivity;
+import suzhou.dataup.cn.myapplication.ui.activity.CountViewPagerActivity;
 import suzhou.dataup.cn.myapplication.bean.ViewPagerBean;
 import suzhou.dataup.cn.myapplication.constance.ConstanceData;
 import suzhou.dataup.cn.myapplication.utiles.LayoutUtil;

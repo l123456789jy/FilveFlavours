@@ -1,15 +1,15 @@
-package suzhou.dataup.cn.myapplication.adputer;
+package suzhou.dataup.cn.myapplication.ui.activity.adputer;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import suzhou.dataup.cn.myapplication.fragment.AndroidFragment;
-import suzhou.dataup.cn.myapplication.fragment.HotFragment;
-import suzhou.dataup.cn.myapplication.fragment.PageFragment;
-import suzhou.dataup.cn.myapplication.fragment.RestViedoFragment;
-import suzhou.dataup.cn.myapplication.fragment.WealFragment;
+import suzhou.dataup.cn.myapplication.ui.activity.fragment.AndroidFragment;
+import suzhou.dataup.cn.myapplication.ui.activity.fragment.HotFragment;
+import suzhou.dataup.cn.myapplication.ui.activity.fragment.PageFragment;
+import suzhou.dataup.cn.myapplication.ui.activity.fragment.RestViedoFragment;
+import suzhou.dataup.cn.myapplication.ui.activity.fragment.WealFragment;
 
 
 /**

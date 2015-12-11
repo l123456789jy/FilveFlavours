@@ -18,7 +18,7 @@ import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import suzhou.dataup.cn.myapplication.adputer.SimpleFragmentPagerAdapter;
+import suzhou.dataup.cn.myapplication.ui.activity.adputer.SimpleFragmentPagerAdapter;
 import suzhou.dataup.cn.myapplication.receiver.BootBroadcastReceiver;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

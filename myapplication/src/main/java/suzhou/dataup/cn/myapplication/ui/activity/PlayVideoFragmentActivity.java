@@ -1,5 +1,5 @@
 
-package suzhou.dataup.cn.myapplication.activity;
+package suzhou.dataup.cn.myapplication.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.media.MediaPlayer;

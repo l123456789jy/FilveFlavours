@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context="suzhou.dataup.cn.myapplication.activity.CountViewPagerActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.CountViewPagerActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
