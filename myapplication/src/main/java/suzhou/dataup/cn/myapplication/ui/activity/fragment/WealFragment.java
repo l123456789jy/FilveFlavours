@@ -22,7 +22,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.ui.activity.adputer.Myadputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;
@@ -31,6 +30,7 @@ import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.listener.RecyclerViewOnScroll;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
 import suzhou.dataup.cn.myapplication.paser.OkJsonParser;
+import suzhou.dataup.cn.myapplication.ui.activity.adputer.Myadputer;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 import suzhou.dataup.cn.myapplication.utiles.SwipContainerUtiles;
 import suzhou.dataup.cn.myapplication.utiles.ToastUtils;
@@ -157,11 +157,12 @@ public class WealFragment extends BaseFragment implements LodeMoreCallBack {
                     }
                 }
             }
-
             @Override
             public void onFailure(Throwable e) {
-                mSwipeContainer.setRefreshing(false);//刷新完毕!
-                ToastUtils.show("获取服务端数据失败");
+                if (null != mSwipeContainer) {
+                    mSwipeContainer.setRefreshing(false);//刷新完毕!
+                    ToastUtils.show("获取服务端数据失败");
+                }
             }
         });
     }
