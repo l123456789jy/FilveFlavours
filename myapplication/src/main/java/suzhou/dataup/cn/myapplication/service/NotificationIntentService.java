@@ -31,6 +31,7 @@ import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.contex.ApplicationData;
 import suzhou.dataup.cn.myapplication.dbs.LocationCode;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
+import suzhou.dataup.cn.myapplication.utiles.BadgeUtil;
 import suzhou.dataup.cn.myapplication.utiles.GsonUtils;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 
@@ -43,6 +44,7 @@ import suzhou.dataup.cn.myapplication.utiles.LogUtil;
  * 顶部天气通知栏的服务
  */
 public class NotificationIntentService extends IntentService {
+    int pageCount = 1;
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     public static final String ACTION_FOO = "suzhou.dataup.cn.myapplication.service.action.FOO";
@@ -116,6 +118,7 @@ public class NotificationIntentService extends IntentService {
                 try {
                     mMessage.obj = response.body().string();
                     mHandler.sendMessage(mMessage);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -146,6 +149,8 @@ public class NotificationIntentService extends IntentService {
             mBuilder.setDefaults(Notification.DEFAULT_SOUND);
             mNotificationManager.notify(0, mBuilder.build());
             LogUtil.e("天气" + msg.obj.toString());
+            //设置角标提醒
+            BadgeUtil.setBadgeCount(getApplicationContext(), pageCount++);
         }
     };
 
