@@ -2,12 +2,29 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/myapplication/libs/arm64-v8a" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/arm64-v8a/libBaiduMapSDK_base_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/arm64-v8a/libBaiduMapSDK_map_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/arm64-v8a/libBaiduMapSDK_v3_5_0_31.so" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myapplication/libs/armeabi" charset="GBK" />
     <file url="file://$PROJECT_DIR$/myapplication/libs/armeabi-v7a" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/armeabi-v7a/libBaiduMapSDK_base_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/armeabi-v7a/libBaiduMapSDK_map_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/armeabi-v7a/libBaiduMapSDK_v3_5_0_31.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/armeabi/libBaiduMapSDK_base_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/armeabi/libBaiduMapSDK_map_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/armeabi/libBaiduMapSDK_v3_5_0_31.so" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myapplication/libs/mips" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/mips/libBaiduMapSDK_v3_5_0_31.so" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myapplication/libs/mips64" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/mips64/libBaiduMapSDK_v3_5_0_31.so" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myapplication/libs/x86" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/x86/libBaiduMapSDK_base_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/x86/libBaiduMapSDK_map_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/x86/libBaiduMapSDK_v3_5_0_31.so" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myapplication/libs/x86_64" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/x86_64/libBaiduMapSDK_base_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/x86_64/libBaiduMapSDK_map_v3_6_1.so" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myapplication/libs/x86_64/libBaiduMapSDK_v3_5_0_31.so" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/header.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_account_balance_black_24dp.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/myapplication/src/main/res/drawable/ic_backspace_black_24dp.png" charset="GBK" />

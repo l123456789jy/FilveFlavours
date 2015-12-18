@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="baidumap">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/myapplication/libs/baidumap.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

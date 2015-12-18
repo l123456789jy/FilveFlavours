@@ -15,7 +15,7 @@
         <item
             android:id="@+id/nav_ver"
             android:icon="@drawable/ic_error_outline_black_36dp"
-            android:title="版本信息"/>
+            android:title="地图"/>
 
         <item
             android:id="@+id/nav_about"

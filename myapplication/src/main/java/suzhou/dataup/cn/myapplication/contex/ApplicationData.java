@@ -12,6 +12,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.Poi;
+import com.baidu.mapapi.SDKInitializer;
 import com.github.mmin18.layoutcast.LayoutCast;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -63,6 +64,8 @@ public class ApplicationData extends Application {
         initImageLoader(context);
         //初始化LeakCanary
         mrefWatcher = LeakCanary.install(this);
+        //初始化百度地图
+        SDKInitializer.initialize(this);
         LayoutCast.init(this);
         initLocation();
         LogUtil.e("屏幕的宽度" + screenWidth);

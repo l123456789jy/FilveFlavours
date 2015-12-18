@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import suzhou.dataup.cn.myapplication.ui.activity.BaiduMapActivity;
 import suzhou.dataup.cn.myapplication.ui.activity.adputer.SimpleFragmentPagerAdapter;
 import suzhou.dataup.cn.myapplication.receiver.BootBroadcastReceiver;
 
@@ -87,8 +88,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Uri uri = Uri.parse("http://l123456789jy.github.io/blog/");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
-            //版本信息
+            //打开百度地图
         } else if (id == R.id.nav_ver) {
+            Intent mBaiduIntent = new Intent(MainActivity.this, BaiduMapActivity.class);
+            startActivity(mBaiduIntent);
             //关于我
         } else if (id == R.id.nav_about) {
             Uri uri = Uri.parse("https://github.com/l123456789jy");

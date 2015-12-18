@@ -14,4 +14,5 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_weather">WeatherActivity</string>
+    <string name="title_activity_baidu_map">BaiduMapActivity</string>
 </resources>
