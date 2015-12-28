@@ -60,4 +60,11 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+
+    <!-- Base application theme.设置tab字体的样式 -->
+    <style name="CustomTabLayoutTextAppearance"
+        parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
