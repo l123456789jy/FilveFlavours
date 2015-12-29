@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.ui.activity.adapter;
+package suzhou.dataup.cn.myapplication.ui.activity.adputer;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

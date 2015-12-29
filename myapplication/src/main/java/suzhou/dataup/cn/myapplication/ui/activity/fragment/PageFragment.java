@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import rx.Observable;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.ui.activity.adapter.NewsAdputer;
+import suzhou.dataup.cn.myapplication.ui.activity.adputer.NewsAdputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.NewsBean;
 import suzhou.dataup.cn.myapplication.bean.ViewPagerBean;

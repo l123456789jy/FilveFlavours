@@ -24,7 +24,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.ui.activity.adapter.VideoResoutAdputer;
+import suzhou.dataup.cn.myapplication.ui.activity.adputer.VideoResoutAdputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.VideoBean;
 import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;
