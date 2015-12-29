@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.ui.activity.adputer;
+package suzhou.dataup.cn.myapplication.ui.activity.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.ui.activity.adputer;
+package suzhou.dataup.cn.myapplication.ui.activity.adapter;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;

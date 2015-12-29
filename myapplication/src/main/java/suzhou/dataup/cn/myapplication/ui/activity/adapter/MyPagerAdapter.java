@@ -1,4 +1,4 @@
-package suzhou.dataup.cn.myapplication.ui.activity.adputer;
+package suzhou.dataup.cn.myapplication.ui.activity.adapter;
 
 /**
  * 作者：liujingyuan on 2015/11/14 23:54

@@ -30,7 +30,7 @@ import suzhou.dataup.cn.myapplication.constance.CountUri;
 import suzhou.dataup.cn.myapplication.listener.RecyclerViewOnScroll;
 import suzhou.dataup.cn.myapplication.mangers.OkHttpClientManager;
 import suzhou.dataup.cn.myapplication.paser.OkJsonParser;
-import suzhou.dataup.cn.myapplication.ui.activity.adputer.Myadputer;
+import suzhou.dataup.cn.myapplication.ui.activity.adapter.Myadputer;
 import suzhou.dataup.cn.myapplication.utiles.LogUtil;
 import suzhou.dataup.cn.myapplication.utiles.SwipContainerUtiles;
 import suzhou.dataup.cn.myapplication.utiles.ToastUtils;

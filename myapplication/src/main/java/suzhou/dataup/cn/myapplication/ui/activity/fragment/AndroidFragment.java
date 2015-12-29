@@ -19,7 +19,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import suzhou.dataup.cn.myapplication.R;
-import suzhou.dataup.cn.myapplication.ui.activity.adputer.AndroidResoutAdputer;
+import suzhou.dataup.cn.myapplication.ui.activity.adapter.AndroidResoutAdputer;
 import suzhou.dataup.cn.myapplication.base.BaseFragment;
 import suzhou.dataup.cn.myapplication.bean.HomeResoutBean;
 import suzhou.dataup.cn.myapplication.callback.LodeMoreCallBack;
