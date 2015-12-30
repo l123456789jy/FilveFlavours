@@ -15,4 +15,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_weather">WeatherActivity</string>
     <string name="title_activity_baidu_map">BaiduMapActivity</string>
+    <string name="makeexit">确定要退出？</string>
+    <string name="sure">确定</string>
+    <string name="cancle">取消</string>
 </resources>

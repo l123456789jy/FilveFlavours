@@ -5,6 +5,7 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -14,10 +15,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import suzhou.dataup.cn.myapplication.ui.activity.BaiduMapActivity;
 import suzhou.dataup.cn.myapplication.ui.activity.adputer.SimpleFragmentPagerAdapter;
 import suzhou.dataup.cn.myapplication.receiver.BootBroadcastReceiver;
@@ -111,6 +115,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
+    @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) { //监控/拦截/屏蔽返回键
+            showBasicNoTitle();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    public void showBasicNoTitle() {
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
+        builder.content(R.string.makeexit)
+               .positiveText(R.string.sure)
+               .negativeText(R.string.cancle)
+               .onPositive(new MaterialDialog.SingleButtonCallback() {
+                   @Override
+                   public void onClick(
+                           @NonNull MaterialDialog dialog,
+                           @NonNull DialogAction which) {
+                       //退出程序
+                       System.exit(0);
+                   }
+               })
+               .show();
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
