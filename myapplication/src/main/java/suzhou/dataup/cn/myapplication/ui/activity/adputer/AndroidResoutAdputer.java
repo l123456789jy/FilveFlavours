@@ -70,7 +70,8 @@ public class AndroidResoutAdputer extends RecyclerView.Adapter<AndroidResoutAdpu
     public void onBindViewHolder(ItemViewHolder viewHolder, int position) {
         int itemViewType = viewHolder.getItemViewType();
         if (itemViewType != IS_FOOTER) {
-            viewHolder.time_tv.setText("更新时间:  " + resultsEntityList.get(position).updatedAt.split("T")[0]);
+          //  viewHolder.time_tv.setText("更新时间:  " + resultsEntityList.get
+          //          (position).updatedAt.split("T")[0]);
             viewHolder.mTextView.setTag(resultsEntityList.get(position).url + "," + resultsEntityList.get(position).desc);
             viewHolder.mTextView.setText(resultsEntityList.get(position).desc);
             layoutUtil.drawViewLayout(viewHolder.mRl, 1f, 0f, 0.040f, 0f);
